@@ -370,3 +370,6 @@ MVT: Mirip dengan MVC, Model dan View dipisahkan, tetapi dalam MVT, ada tambahan
 Model berfungsi sebagai basis data dan logika bisnis, View bertanggung jawab untuk menampilkan data, dan Template mengatur tampilan.
 MVVM: Mengenalkan konsep ViewModel, yang tidak ada dalam MVC dan MVT. ViewModel bertindak sebagai perantara antara Model dan View, mengelola tampilan, dan memungkinkan pemisahan yang lebih kuat antara logika bisnis dan tampilan.
 ViewModel mengubah data dari Model ke format yang dapat ditampilkan oleh View, sehingga View menjadi lebih pasif dan lebih mudah diuji.
+
+# Bonus
+<img width="458" alt="Screen Shot 2023-09-12 at 21 55 38" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/9dff18fe-78fb-436c-a685-2758756aa8d2">
