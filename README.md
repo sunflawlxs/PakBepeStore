@@ -33,7 +33,7 @@ kita bisa mengecek http://localhost:8000 untuk melihat apakah aplikasi Django ka
 UNGGAH PROYEK KE REPOSITORI GITHUB
 1. Tambahkan berkas .gitignore di dalam folder PakBepeStore dengan teks berikut
    
-'''python
+'''
 # Django
 *.log
 *.pot
