@@ -31,8 +31,8 @@ kita bisa mengecek http://localhost:8000 untuk melihat apakah aplikasi Django ka
 5. Untuk menghentikan server, tekan Ctrl+C. 
 
 UNGGAH PROYEK KE REPOSITORI GITHUB
-1. Tambahkan berkas .gitignore di dalam folder PakBepeStore dengan teks berikut 
-...
+1. Tambahkan berkas .gitignore di dalam folder PakBepeStore dengan teks berikut
+'''python
 # Django
 *.log
 *.pot
@@ -170,7 +170,7 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
-...
+'''python
 
 Membuat Aplikasi main dalam Proyek Shopping List
 1. Jalankan perintah ini unntuk membentuk direktori baru untuk membentuk direktori baru dengan nama main
