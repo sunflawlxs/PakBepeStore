@@ -310,7 +310,7 @@ Virtual Environment adalah alat yang sangat berguna ketika kita membutuhkan depe
 # Apakah kita tetap bisa membuat aplikasi web berbasis Django tanpa menggunakan virtual environment? 
 Bisa, tetapi disarankan untuk menggunakan virtual environment dalam pembuatan web berbasis Django untuk menghindari masalah potensial dan menjaga agar proyek kita tetap terorganisir, bersih dan mudah dikelola. 
 
-![text]https://imgbox.com/gallery/edit/df8WxtHf3c/1DpdzidQZ6NSjTef
+![text][https://imgbox.com/gallery/edit/df8WxtHf3c/1DpdzidQZ6NSjTef](https://imgbox.com/WSOjvmAP)
 
 
 # Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya
