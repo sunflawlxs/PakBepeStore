@@ -1,4 +1,4 @@
-MELAKUKAN INISIASI GITHUB#
+# MELAKUKAN INISIASI GITHUB
 
 Pada langkah ini saya telah memastikan kalau sudah memiliki akun GitHub karena saya akan melakukan inisiasi repositori di GitHub yang telah saya miliki. 
 
@@ -13,7 +13,7 @@ python -m venv env
 6. Setelah berhasil membuat virtual environment kita bisa mengaktifkannya dengan perintah. 
 env\Scripts\activate.bat
 
-Menyiapkan Dependencies dan Membuat Proyek Django
+# Menyiapkan Dependencies dan Membuat Proyek Django
 1. Di dalam direktori yang sama, kita membuat requirements.txt dan menambahkan beberapa dependencies. 
 django
 gunicorn
@@ -24,7 +24,7 @@ urllib3
 2. Kita membuat aplikasi Django baru bernama PakBepeStore dengan perintah 
 django-admin startproject PakBepeStore .
 3. Setelah itu untuk keperluan deployment kita bisa menambahkan * pada ALLOWED_HOSTS di settings.py
-ALLOWED_HOSTS = ["*"]
+* ALLOWED_HOSTS = ["*"]
 4. Kemudian pastikan berkas manage.py ada pada direktori yang aktif dengan menjalankan perintah 
 ./manage.py runserver
 kita bisa mengecek http://localhost:8000 untuk melihat apakah aplikasi Django kamu berhasil dibuat atau tidak. 
