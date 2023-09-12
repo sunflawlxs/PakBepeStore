@@ -4,36 +4,41 @@ Pada langkah ini saya telah memastikan kalau sudah memiliki akun GitHub karena s
 
 1. Buka akun GitHub, kemudian buatlah Repositori Baru dengan nama "PakBepeStore", pastikan sudah mengatur visibilitas proyek sebagai "Public" dan biarkan pengaturan lainnya pada nilai default. 
 2. Membuat direktori lokal di komputer yang telah diinisasi dengan Git. Kemudian menambahkan berkas README.md. Isi berkas tersebut dengan kata-kata atau kalimat yang bisa disesuaikan atau bisa menggunakan "tes" untuk sementara. 
-3. Setelah itu bukalah terminal di folder yang telah kamu buat kemudian clone ke akun GitHub dengan repository yang kamu buat sebelumnya. git clone <URL_CLONE> (gantilah URL_CLONE dengan URL yang telah kamu salin).
+3. Setelah itu bukalah terminal di folder yang telah kamu buat kemudian clone ke akun GitHub dengan repository yang kamu buat sebelumnya. 
+```git clone <URL_CLONE>``` (gantilah URL_CLONE dengan URL yang telah kamu salin).
 4. Kemudian di dalam folder kita membuat direktori baru dengan nama PakBepeStore dengan menjalankan perintah 
-mkdir book_collection
-cd book_collection
+```
+mkdir PakBepeStore
+cd PakBepeStore
+```
 5. Setelah itu kita membuat virtual environment dengan menjalankan perintah 
-python -m venv env
+```python -m venv env```
 6. Setelah berhasil membuat virtual environment kita bisa mengaktifkannya dengan perintah. 
-env\Scripts\activate.bat
+```env\Scripts\activate.bat```
 
 # Menyiapkan Dependencies dan Membuat Proyek Django
-1. Di dalam direktori yang sama, kita membuat requirements.txt dan menambahkan beberapa dependencies. 
+1. Di dalam direktori yang sama, kita membuat ```requirements.txt``` dan menambahkan beberapa dependencies. 
+```
 django
 gunicorn
 whitenoise
 psycopg2-binary
 requests
 urllib3
+```
 2. Kita membuat aplikasi Django baru bernama PakBepeStore dengan perintah 
-django-admin startproject PakBepeStore .
-3. Setelah itu untuk keperluan deployment kita bisa menambahkan * pada ALLOWED_HOSTS di settings.py
-* ALLOWED_HOSTS = ["*"]
+```django-admin startproject PakBepeStore .```
+3. Setelah itu untuk keperluan deployment kita bisa menambahkan ```*``` pada ```ALLOWED_HOSTS``` di ```settings.py```
+```* ALLOWED_HOSTS = ["*"]```
 4. Kemudian pastikan berkas manage.py ada pada direktori yang aktif dengan menjalankan perintah 
-./manage.py runserver
+```./manage.py runserver```
 kita bisa mengecek http://localhost:8000 untuk melihat apakah aplikasi Django kamu berhasil dibuat atau tidak. 
-5. Untuk menghentikan server, tekan Ctrl+C. 
+5. Untuk menghentikan server, tekan ```Ctrl+C```. 
 
-UNGGAH PROYEK KE REPOSITORI GITHUB
-1. Tambahkan berkas .gitignore di dalam folder PakBepeStore dengan teks berikut
+# UNGGAH PROYEK KE REPOSITORI GITHUB
+1. Tambahkan berkas ```.gitignore``` di dalam folder PakBepeStore dengan teks berikut
    
-'''
+```python
 # Django
 *.log
 *.pot
@@ -171,33 +176,39 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
-'''
+```
 
-Membuat Aplikasi main dalam Proyek Shopping List
+# Membuat Aplikasi main dalam Proyek Shopping List
 1. Jalankan perintah ini unntuk membentuk direktori baru untuk membentuk direktori baru dengan nama main
+```
 python manage.py startapp main
-2. mendaftarkan aplikasi main ke dalam proyek Buka berkas settings.py di dalam direktori proyek PakBepeStore
+```
+2. mendaftarkan aplikasi main ke dalam proyek Buka berkas ```settings.py``` di dalam direktori proyek PakBepeStore
 
-Temukan variabel INSTALLED_APPS.
+Temukan variabel ```INSTALLED_APPS```.
 
 Tambahkan 'main' ke dalam daftar aplikasi 
+```
 INSTALLED_APPS = [
     ...,
     'main',
     ...
 ]
-3. kemudian sekarang kita membuat direktori baru bernama templates di dalam direktori aplikasi main. di dalam direktori tersebut kita membuat berkas baru bernama main.html dengan isi 
+```
+3. kemudian sekarang kita membuat direktori baru bernama templates di dalam direktori aplikasi ```main```. di dalam direktori tersebut kita membuat berkas baru bernama ```main.html``` dengan isi 
+```
 <h1>PakBepeStore Page</h1>
 
 <h5>App Name: </h5>
 <p>PakBepeStore</p> 
 <h5>Class: </h5>
-<p>PBP D</p> 
+<p>PBP D</p>
+```
 
-4. uka berkas models.py pada direktori aplikasi main.
+4. buka berkas ```models.py``` pada direktori aplikasi main.
 
-5. Isi berkas models.py dengan kode berikut.
-
+5. Isi berkas ```models.py``` dengan kode berikut.
+```
 from django.db import models
 
 class Product(models.Model):
@@ -205,20 +216,20 @@ class Product(models.Model):
     date_added = models.DateField(auto_now_add=True)
     price = models.IntegerField()
     description = models.TextField()
-
+```
 6. Jalankan perintah berikut untuk membuat migrasi model.
-
+```
 python manage.py makemigrations
-
+```
 7. Jalankan perintah berikut untuk menerapkan migrasi ke dalam basis data lokal.
-
+```
 python manage.py migrate
+```
+8. Kemudian bukalah berkas ```views.py``` yang terletak di dalam berkas aplikasi main. tambahkan baris impor dibagian paling atas 
+```from django.shortcuts import render```
 
-8. Kemudian bukalah berkas views.py yang terletak di dalam berkas aplikasi main. tambahkan baris impor dibagian paling atas 
-from django.shortcuts import render
-
-9. tambahkan fungsi show_main dibawah impor: 
-
+9. tambahkan fungsi ```show_main``` dibawah impor: 
+```
 def show_main(request):
     context = {
         'name': 'PakBepeStore',
@@ -226,18 +237,20 @@ def show_main(request):
     }
 
     return render(request, "main.html", context)
-
-10. buka kembali main.html di direktori templates pada direktori main
+```
+10. buka kembali ```main.html``` di direktori ```templates``` pada direktori ```main```
 
 11. ubah nama dan kelas yang dibuat 
+```
 ...
 <h5> App Name: </h5>
 <p>{{ PakBepeStore }}<p>
 <h5>Class: </h5>
 <p>{{ D }}<p>
 ...
-
-12. setelah itu kita membuat berkas urls.py di dalam direktori main. isi dengan kode berikut 
+```
+12. setelah itu kita membuat berkas ```urls.py``` di dalam direktori main. isi dengan kode berikut 
+```
 from django.urls import path
 from main.views import show_main
 
@@ -246,8 +259,9 @@ app_name = 'main'
 urlpatterns = [
     path('', show_main, name='show_main'),
 ]
-
-13. Buka berkas urls.py di dalam direktori proyek PakBepeStore, bukan yang ada di dalam direktori aplikasi main. tambahkan 
+```
+13. Buka berkas ```urls.py``` di dalam direktori proyek PakBepeStore, bukan yang ada di dalam direktori aplikasi main. tambahkan 
+```
 ...
 from django.urls import path, include
 ...
@@ -257,10 +271,11 @@ urlpatterns = [
     path('main/', include('main.urls')),
     ...
 ]
-
-14. kemudian coba jalankan proyek django dengan perintah python manage.py runserver lalu buka http://localhost:8000/main/ untuk melihat halaman yang dibuat
+```
+14. kemudian coba jalankan proyek django dengan perintah python manage.py runserver lalu buka ```http://localhost:8000/main/``` untuk melihat halaman yang dibuat
 
 15. buka berkas tests.py pada aplikasi main. kemudian isi dengan kode berikut 
+```
 from django.test import TestCase, Client
 
 class mainTest(TestCase):
@@ -271,28 +286,34 @@ class mainTest(TestCase):
     def test_main_using_main_template(self):
         response = Client().get('/main/')
         self.assertTemplateUsed(response, 'main.html')
-
+```
 16. lalu jalankan tes dengan perintah 
+```
 python manage.py test
-
+```
 17. apabila sudah benar kita bisa add, commit, dan push
+```
 git add .
 git commit -m "<pesan_commit>"
 git push -u origin <branch_utama>
-
-Melakukan Deployment ke Adaptable
+```
+# Melakukan Deployment ke Adaptable
 1. Sambungkan akun GitHub, kemudian tekan tombol New App dan pilih connect an Existing Repository
 2. Pilih repository yang mau dihubungkan yaitu PakBepeStore dan pilih branch yang digunakan. 
-3. Pilih Python App Template dan PostgreSQL sebagai tipe datanya.
-4. Pilih versi python yang digunakan kemudian isi Start Command dengan python manage.py migrate && gunicorn PakBepeStore.wsgi
+3. Pilih ```Python App Template``` dan``` PostgreSQL ```sebagai tipe datanya.
+4. Pilih versi python yang digunakan kemudian isi Start Command dengan ```python manage.py migrate && gunicorn PakBepeStore.wsgi```
 5. Kemudian kalian bisa langsung melakukan deployment dan menunggunya hingga finish.
 
+# Pengertian Virtual Environment
 Virtual Environment adalah alat yang sangat berguna ketika kita membutuhkan dependencies yang berbeda-beda antara project satu dengan lainnya yang berjalan pada satu operasi yang sama. Virtual Environment sendiri digunakan untuk project yang berbasis python. Ada banyak alasan mengapa kita menggunakan virtual environment. Salah satunya adalah keamanan proyek, kita kita menggunakan virtual environment, proyek kita bisa terlindungi dari adanya potensi kerusakan atau konflik dengan sistem python yang ada di device. 
 
-Apakah kita tetap bisa membuat aplikasi web berbasis Django tanpa menggunakan virtual environment? 
+# Apakah kita tetap bisa membuat aplikasi web berbasis Django tanpa menggunakan virtual environment? 
 Bisa, tetapi disarankan untuk menggunakan virtual environment dalam pembuatan web berbasis Django untuk menghindari masalah potensial dan menjaga agar proyek kita tetap terorganisir, bersih dan mudah dikelola. 
 
-Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya
+![text]https://imgbox.com/gallery/edit/df8WxtHf3c/1DpdzidQZ6NSjTef
+
+
+# Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya
 MVC (Model-View Controller)
 Model View Controller atau yang dapat disingkat MVC adalah sebuah pola arsitektur dalam membuat sebuah aplikasi dengan cara memisahkan kode menjadi tiga bagian yang terdiri dari:
 
@@ -305,7 +326,6 @@ Bagian yang bertugas untuk menampilkan informasi dalam bentuk Graphical User Int
 Controller
 Bagian yang bertugas untuk menghubungkan serta mengatur model dan view agar dapat saling terhubung.
 
-
 source: https://www.dicoding.com/blog/apa-itu-mvc-pahami-konsepnya/
 
 MVT
@@ -313,7 +333,9 @@ The MVT (Model View Template) is a software design pattern. It is a collection o
 The Template is a presentation layer which handles User Interface part completely. The View is used to execute the business logic and interact with a model to carry data and renders a template.
 Although Django follows MVC pattern but maintains it?s own conventions. So, control is handled by the framework itself.
 There is no separate controller and complete application is based on Model View and Template. That?s why it is called MVT application.
-
+Model: As an object that defines entities in the database and their configuration
+View: The main logic of the application that will process incoming requests
+Template: as the view that will be returned to the user
 
 source: https://www.javatpoint.com/django-mvt
 
@@ -325,3 +347,11 @@ View: menentukan struktur, tata letak, teks, gambar, dan elemen antarmuka lainny
 
 ViewModel: penghubung view dan model
 source: https://revou.co/kosakata/mvvm#:~:text=MVVM%20adalah%20pola%20desain%20yang,Model%2C%20View%2C%20dan%20ViewModel.
+
+# Perbedaan 
+MVC: Model berfungsi sebagai penampung data dan logika bisnis, View hanya bertugas menampilkan data, dan Controller mengendalikan alur aplikasi.
+Hubungan antara Model dan View diatur oleh Controller. View tidak tahu tentang Model, dan Model tidak tahu tentang View.
+MVT: Mirip dengan MVC, Model dan View dipisahkan, tetapi dalam MVT, ada tambahan konsep "Template" yang mengontrol tampilan dan tata letak View.
+Model berfungsi sebagai basis data dan logika bisnis, View bertanggung jawab untuk menampilkan data, dan Template mengatur tampilan.
+MVVM: Mengenalkan konsep ViewModel, yang tidak ada dalam MVC dan MVT. ViewModel bertindak sebagai perantara antara Model dan View, mengelola tampilan, dan memungkinkan pemisahan yang lebih kuat antara logika bisnis dan tampilan.
+ViewModel mengubah data dari Model ke format yang dapat ditampilkan oleh View, sehingga View menjadi lebih pasif dan lebih mudah diuji.
