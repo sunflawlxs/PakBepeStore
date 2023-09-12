@@ -310,8 +310,23 @@ Virtual Environment adalah alat yang sangat berguna ketika kita membutuhkan depe
 # Apakah kita tetap bisa membuat aplikasi web berbasis Django tanpa menggunakan virtual environment? 
 Bisa, tetapi disarankan untuk menggunakan virtual environment dalam pembuatan web berbasis Django untuk menghindari masalah potensial dan menjaga agar proyek kita tetap terorganisir, bersih dan mudah dikelola. 
 
-![text][https://imgbox.com/gallery/edit/df8WxtHf3c/1DpdzidQZ6NSjTef](https://imgbox.com/WSOjvmAP)
+# Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
 
+<img width="650" alt="Screen Shot 2023-09-12 at 19 50 08" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/b72a4075-98ae-433e-bfc0-2ccd741bfa4f">
+
+Penjelasan langkah-langkah di atas:
+
+User: Permintaan pertama datang dari user, seperti mengakses halaman beranda situs web yang ada.
+
+URLs (urls.py): Permintaan tersebut pertama-tama diarahkan ke berkas urls.py. Berkas ini berisi daftar URL yang akan ditangani oleh Django. Setiap URL memiliki tautan ke tindakan (view) yang akan dijalankan saat URL tersebut diakses.
+
+Views (views.py): Setelah URL ditentukan, tindakan (view) yang sesuai dengan URL tersebut dijalankan. Berkas views.py berisi logika yang mengatur bagaimana tampilan akan diberikan sebagai respons. Ini dapat melibatkan pengambilan data dari model, pengolahan data, dan kemudian menentukan berkas HTML mana yang akan digunakan.
+
+Models (models.py): Dalam proses ini, jika diperlukan, data dapat diambil atau dimanipulasi melalui model yang didefinisikan dalam berkas models.py. Model ini mewakili struktur data dalam aplikasi, seperti tabel database atau objek Python.
+
+Berkas HTML (Template): View kemudian memilih berkas HTML yang sesuai (template) untuk digunakan. Template ini berisi tampilan akhir yang akan dikirimkan ke klien. Biasanya, template ini memiliki variabel yang akan diisi dengan data dari model.
+
+Response ke Klien: Setelah template diisi dengan data, tampilan akhir dikirim sebagai respons ke klien, yang kemudian ditampilkan di browser klien.
 
 # Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya
 MVC (Model-View Controller)
