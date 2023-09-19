@@ -1,6 +1,7 @@
 # Tautan Adaptable 
 https://pakbepestore.adaptable.app/main/
 
+TUGAS 2
 # MELAKUKAN INISIASI GITHUB
 
 Pada langkah ini saya telah memastikan kalau sudah memiliki akun GitHub karena saya akan melakukan inisiasi repositori di GitHub yang telah saya miliki. 
@@ -376,3 +377,247 @@ ViewModel mengubah data dari Model ke format yang dapat ditampilkan oleh View, s
 
 # Bonus
 <img width="458" alt="Screen Shot 2023-09-12 at 21 55 38" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/9dff18fe-78fb-436c-a685-2758756aa8d2">
+
+
+TUGAS 3
+ 1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
+  * Pertama-tama saya membuka terminal di folder '''PakBepeStore''' dan mengaktifkan '''virtual environment''' seperti berikut 
+'''
+source env/bin/activate
+'''
+   * Kemudian saya membuka urls.py di folder '''PakBepeStore''' dan mengubah path main/ menjadi '''''''' pada '''urlpatterns''' seperti berikut
+'''
+urlpatterns = [
+    path('', include('main.urls')),
+    path('admin/', admin.site.urls),
+]
+'''
+   * Lalu mengimpplementasi Skeleton dengan membuat folder '''templates''' pada root folder dan buat base.html. isilah berkas base.html sebagai berikut:
+'''
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        {% block meta %}
+        {% endblock meta %}
+    </head>
+
+    <body>
+        {% block content %}
+        {% endblock content %}
+    </body>
+</html>
+'''
+   * Lalu buka '''settings.py''' yang ada pada subdirektori PakBepeStore dan carilah baris yang mengandung '''TEMPLATES'''. Kemudian sesuaikan kode berikut dengan yang sebelumnya sudah dibuat.
+'''
+...
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'], # Tambahkan kode ini
+        'APP_DIRS': True,
+        ...
+    }
+]
+...
+'''
+   * Pada subdirektori templates yang ada di '''main''', ubah kode '''main.html''' menjadi sebagai berikut 
+'''
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>PakBepeStore Page</h1>
+
+    <h5>Name:</h5>
+    <p>{{name}}</p>
+
+    <h5>Class:</h5>
+    <p>{{class}}</p>
+{% endblock content %}
+'''
+   * Kemudian buat forms.py pada direktori '''main''' dengan kode 
+'''
+from django.forms import ModelForm
+from main.models import Product
+
+class ProductForm(ModelForm):
+    class Meta:
+        model = Product
+        fields = ["name", "price", "description"]
+'''
+   * Tambahkan import pada bagian atas di berkas '''views.py''' di folder '''main'''
+'''
+from django.http import HttpResponseRedirect
+from main.forms import ProductForm
+from django.urls import reverse
+'''
+   * Buat fungsi baru '''create_product''' seperti berikut
+'''
+def create_product(request):
+    form = ProductForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "create_product.html", context)
+'''
+   * Ubah fungsi '''show_main''' yang sudah ada di '''views.py'''
+'''
+def show_main(request):
+    products = Product.objects.all()
+
+    context = {
+        'AppName': 'PakBepeStore" ,
+        'name': 'Sheryl', # Nama kamu
+        'class': 'PBP D', # Kelas PBP kamu
+        'products': products
+    }
+
+    return render(request, "main.html", context)
+
+'''
+   * import fungsi create_product di folder main di '''urls.py''' dan tambahkan path url di '''urlpatterns'''
+'''
+from main.views import show_main, create_product
+'''
+'''
+path('create-product', create_product, name='create_product'),
+'''
+   * Kemudian membuat berkas create_product.html pada direktori ''main/templates''' isi kode berikut: 
+'''
+{% extends 'base.html' %} 
+
+{% block content %}
+<h1>Add New Product</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Add Product"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}
+'''
+   * buka '''main.html''' tambahkan kode berikut 
+'''
+...
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Date Added</th>
+    </tr>
+
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+    {% for product in products %}
+        <tr>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.date_added}}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<br />
+
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
+
+{% endblock content %}
+'''
+
+ 2. Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
+   * menambahkan beberapa fungsi dan import views.py di direktori main
+'''
+from django.http import HttpResponse
+from django.core import serializers
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from main.forms import ProductForm
+from django.urls import reverse
+from main.models import Product
+
+def show_main(request):
+    products = Product.objects.all()
+
+    context = {
+        'name': 'Sheryl Ivana',
+        'class': 'PBP D', 
+        'products': products
+    }
+
+    return render(request, "main.html", context)
+
+def create_product(request):
+    form = ProductForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "create_product.html", context)
+
+def show_xml(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_xml_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+'''
+ 3. Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
+   * memodifikasi urls.py pada folder main dengan melakukan import dan menambahkan path 
+'''
+from django.urls import path
+from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
+
+app_name = 'main'
+
+urlpatterns = [
+    path('', show_main, name='show_main'),
+    path('create-product', create_product, name='create_product'),
+    path('xml/', show_xml, name='show_xml'), 
+    path('json/', show_json, name='show_json'), 
+    path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+    path('json/<int:id>/', show_json_by_id, name='show_json_by_id'), 
+]
+'''
+# Menjawab beberapa pertanyaan berikut pada README.md pada root folder.
+ 1. Apa perbedaan antara form POST dan form GET dalam Django?
+-  Pengiriman data
+  POST: data dikirim secara tersembunyi dan dikirim sebagai bagian dari body permintaan HTTP.
+   GET: data dikirim melalui URL sebagai paramater quetry string. 
+ Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+ Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+ Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+ Melakukan add-commit-push ke GitHub.
