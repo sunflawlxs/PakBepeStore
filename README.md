@@ -656,4 +656,43 @@ JSON mendukung berbagai jenis data, termasuk string, angka, boolean, bojek, dan 
 JSON dapat digunakan dalam kode Java Script tanpa perlu proses parsing yang rumit. Ini memungkinkan aplikasi yang lebih bersih dan efisien, terutama ketika menghubungkan antara klien dan server.
 
 Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+```Link 1```
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 17 44" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/44e8c134-705f-41b4-aecf-7abc0d649a4c">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 17 48" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/b2c5bf9f-6209-4282-bbdc-fbcf52c18d33">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 17 55" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/70b02872-64c8-4cf9-9596-73cb178c58d2">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 18 01" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/e8e74749-d4de-4d39-8366-c18efa0e8d75">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 18 07" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/cdf92d4f-7d5a-47f4-9f3a-408ada5939ff">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 18 15" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/0a0bb9c0-8920-4f02-b56d-af00bd70f9ea">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 18 19" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/81845ba9-e4b3-4014-b70e-084a01e2a1cc">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 18 24" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/cf542352-424a-473a-b8f1-dc47a74fe43b">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 18 31" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/4934d656-39a4-472d-afbc-558c40d65451">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 18 34" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/48871e81-c57d-4601-acb2-280b3d0d0843">
+
+```Link 2```
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 11 27" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/ef22912b-4147-4bf0-814d-4b1bcbc3fdcd">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 11 36" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/3144c1ce-8d8b-458d-874f-b59d3b472b07">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 11 42" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/7bbf8122-be94-4412-b570-2af5c8039dd2">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 11 51" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/229288ba-33b7-4761-829f-ff5a78d31298">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 11 59" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/2a2397d2-c92d-4512-97bb-1d828c6f0a6d">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 12 06" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/bfa966e9-3251-4d69-8e27-f98e68c14a9f">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 12 23" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/7894c0eb-b678-4830-8c47-22eb8d745a57">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 12 31" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/4ac5116d-d007-40b7-be2d-16ddca01068d">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 12 39" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/f2826fc0-62bf-4b0b-92b0-334a076a08e5">
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 12 45" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/d51eee21-ba7d-4bf5-9b6c-ad34cd2bb88d">
+
+```Link 3```
+<img width="1104" alt="Screen Shot 2023-09-19 at 19 57 19" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/2bbfa972-2e59-4a66-bdc7-7af1961e67a4">
+
+```Link 4```
+<img width="1104" alt="Screen Shot 2023-09-19 at 19 57 48" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/29b0b02e-380c-4722-8e4a-56a8fdb1da0c">
+
+```Link 5```
+<img width="1104" alt="Screen Shot 2023-09-19 at 19 56 13" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/4fbd0b99-2bc0-4b20-9646-4599615d34f2">
+<img width="1104" alt="Screen Shot 2023-09-19 at 19 56 21" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/c37b2e42-7524-4b16-a1be-7cb24786f929">
+<img width="1104" alt="Screen Shot 2023-09-19 at 19 56 28" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/b1951775-c161-4317-8000-6713eb9afd7c">
+<img width="1104" alt="Screen Shot 2023-09-19 at 19 56 33" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/44347695-d1db-45ee-b019-7df05c4c4576">
+
+
+
+
  Melakukan add-commit-push ke GitHub.
