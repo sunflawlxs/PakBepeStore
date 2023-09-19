@@ -381,19 +381,21 @@ ViewModel mengubah data dari Model ke format yang dapat ditampilkan oleh View, s
 
 TUGAS 3
  1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
-  * Pertama-tama saya membuka terminal di folder '''PakBepeStore''' dan mengaktifkan '''virtual environment''' seperti berikut 
-'''
+  * Pertama-tama saya membuka terminal di folder ```PakBepeStore``` dan mengaktifkan ```virtual environment``` seperti berikut 
+```
 source env/bin/activate
-'''
-   * Kemudian saya membuka urls.py di folder '''PakBepeStore''' dan mengubah path main/ menjadi '''''''' pada '''urlpatterns''' seperti berikut
-'''
+```
+
+   * Kemudian saya membuka urls.py di folder ```PakBepeStore``` dan mengubah path main/ menjadi ```''``` pada ```urlpatterns``` seperti berikut
+```
 urlpatterns = [
     path('', include('main.urls')),
     path('admin/', admin.site.urls),
 ]
-'''
+```
+   
    * Lalu mengimpplementasi Skeleton dengan membuat folder '''templates''' pada root folder dan buat base.html. isilah berkas base.html sebagai berikut:
-'''
+```
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -412,9 +414,9 @@ urlpatterns = [
         {% endblock content %}
     </body>
 </html>
-'''
-   * Lalu buka '''settings.py''' yang ada pada subdirektori PakBepeStore dan carilah baris yang mengandung '''TEMPLATES'''. Kemudian sesuaikan kode berikut dengan yang sebelumnya sudah dibuat.
-'''
+```
+   * Lalu buka ```settings.py``` yang ada pada subdirektori PakBepeStore dan carilah baris yang mengandung ```TEMPLATES```. Kemudian sesuaikan kode berikut dengan yang sebelumnya sudah dibuat.
+```
 ...
 TEMPLATES = [
     {
@@ -425,9 +427,9 @@ TEMPLATES = [
     }
 ]
 ...
-'''
-   * Pada subdirektori templates yang ada di '''main''', ubah kode '''main.html''' menjadi sebagai berikut 
-'''
+```
+   * Pada subdirektori templates yang ada di ```main```, ubah kode ```main.html``` menjadi sebagai berikut 
+```
 {% extends 'base.html' %}
 
 {% block content %}
@@ -439,9 +441,9 @@ TEMPLATES = [
     <h5>Class:</h5>
     <p>{{class}}</p>
 {% endblock content %}
-'''
-   * Kemudian buat forms.py pada direktori '''main''' dengan kode 
-'''
+```
+   * Kemudian buat forms.py pada direktori ```main``` dengan kode 
+```
 from django.forms import ModelForm
 from main.models import Product
 
@@ -449,15 +451,15 @@ class ProductForm(ModelForm):
     class Meta:
         model = Product
         fields = ["name", "price", "description"]
-'''
+```
    * Tambahkan import pada bagian atas di berkas '''views.py''' di folder '''main'''
-'''
+```
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
 from django.urls import reverse
-'''
-   * Buat fungsi baru '''create_product''' seperti berikut
-'''
+```
+   * Buat fungsi baru ```create_product``` seperti berikut
+```
 def create_product(request):
     form = ProductForm(request.POST or None)
 
@@ -467,9 +469,9 @@ def create_product(request):
 
     context = {'form': form}
     return render(request, "create_product.html", context)
-'''
-   * Ubah fungsi '''show_main''' yang sudah ada di '''views.py'''
-'''
+```
+   * Ubah fungsi ```show_main``` yang sudah ada di ```views.py```
+```
 def show_main(request):
     products = Product.objects.all()
 
@@ -481,17 +483,17 @@ def show_main(request):
     }
 
     return render(request, "main.html", context)
+```
 
-'''
-   * import fungsi create_product di folder main di '''urls.py''' dan tambahkan path url di '''urlpatterns'''
-'''
+   * import fungsi ```create_product``` di folder main di ```urls.py``` dan tambahkan path url di ```urlpatterns```
+```
 from main.views import show_main, create_product
-'''
-'''
+```
+```
 path('create-product', create_product, name='create_product'),
-'''
-   * Kemudian membuat berkas create_product.html pada direktori ''main/templates''' isi kode berikut: 
-'''
+```
+   * Kemudian membuat berkas ```create_product.html``` pada direktori ```main/templates``` isi kode berikut: 
+```
 {% extends 'base.html' %} 
 
 {% block content %}
@@ -511,9 +513,9 @@ path('create-product', create_product, name='create_product'),
 </form>
 
 {% endblock %}
-'''
-   * buka '''main.html''' tambahkan kode berikut 
-'''
+```
+   * buka ```main.html``` tambahkan kode berikut 
+```
 ...
 <table>
     <tr>
@@ -544,11 +546,11 @@ path('create-product', create_product, name='create_product'),
 </a>
 
 {% endblock content %}
-'''
+```
 
  2. Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID.
    * menambahkan beberapa fungsi dan import views.py di direktori main
-'''
+```
 from django.http import HttpResponse
 from django.core import serializers
 from django.shortcuts import render
@@ -593,11 +595,11 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+```
 
-'''
  3. Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2.
    * memodifikasi urls.py pada folder main dengan melakukan import dan menambahkan path 
-'''
+```
 from django.urls import path
 from main.views import show_main, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
 
@@ -611,7 +613,7 @@ urlpatterns = [
     path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
     path('json/<int:id>/', show_json_by_id, name='show_json_by_id'), 
 ]
-'''
+```
 # Menjawab beberapa pertanyaan berikut pada README.md pada root folder.
  1. Apa perbedaan antara form POST dan form GET dalam Django?
 -  Pengiriman data
