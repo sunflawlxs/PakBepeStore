@@ -1,7 +1,10 @@
 # Tautan Adaptable 
 https://pakbepestore.adaptable.app/main/
 
-TUGAS 2
+# TUGAS PBP
+<details>
+<summary> TUGAS 2</summary>
+
 # MELAKUKAN INISIASI GITHUB
 
 Pada langkah ini saya telah memastikan kalau sudah memiliki akun GitHub karena saya akan melakukan inisiasi repositori di GitHub yang telah saya miliki. 
@@ -377,9 +380,12 @@ ViewModel mengubah data dari Model ke format yang dapat ditampilkan oleh View, s
 
 # Bonus
 <img width="458" alt="Screen Shot 2023-09-12 at 21 55 38" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/9dff18fe-78fb-436c-a685-2758756aa8d2">
+</details>
 
 
-TUGAS 3
+<details>
+<summary> TUGAS 3</summary>
+
  1. Membuat input form untuk menambahkan objek model pada app sebelumnya.
   * Pertama-tama saya membuka terminal di folder ```PakBepeStore``` dan mengaktifkan ```virtual environment``` seperti berikut 
 ```
@@ -394,7 +400,7 @@ urlpatterns = [
 ]
 ```
    
-   * Lalu mengimpplementasi Skeleton dengan membuat folder '''templates''' pada root folder dan buat base.html. isilah berkas base.html sebagai berikut:
+   * Lalu mengimpplementasi Skeleton dengan membuat folder ```templates``` pada root folder dan buat base.html. isilah berkas base.html sebagai berikut:
 ```
 {% load static %}
 <!DOCTYPE html>
@@ -452,7 +458,7 @@ class ProductForm(ModelForm):
         model = Product
         fields = ["name", "price", "description"]
 ```
-   * Tambahkan import pada bagian atas di berkas '''views.py''' di folder '''main'''
+   * Tambahkan import pada bagian atas di berkas ```views.py``` di folder ```main```
 ```
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
@@ -693,6 +699,14 @@ Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasi
 <img width="1104" alt="Screen Shot 2023-09-19 at 19 56 33" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/44347695-d1db-45ee-b019-7df05c4c4576">
 
 
-
+BONUS 
+Menambahkan pesan "Kamu menyimpan 2 item pada toko ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama. 
+<img width="1259" alt="Screen Shot 2023-09-19 at 20 25 25" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/a281c419-8f27-4f81-8ae9-b785f913e65d">
 
  Melakukan add-commit-push ke GitHub.
+```
+git add .
+git commit -m "done tugas 3"
+git push -u origin main
+```
+</details>
