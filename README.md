@@ -616,8 +616,42 @@ urlpatterns = [
  1. Apa perbedaan antara form POST dan form GET dalam Django?
 -  Pengiriman data
   POST: data dikirim secara tersembunyi dan dikirim sebagai bagian dari body permintaan HTTP.
-   GET: data dikirim melalui URL sebagai paramater quetry string. 
- Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
- Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
- Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+  GET: data dikirim melalui URL sebagai paramater quetry string. data inii dapat dilihat di dalam URL, yang membuat kurang aman untuk data yang sensitif.
+-    Keamanan
+  POST: lebih aman daripada GET karena data tidak terlihat di URL sehingga cocok untuk data yang sensitif.
+   GET: kurang aman karena data terlihat dalam URL.
+-   Penggunaan
+  POST : Digunakan ketika Anda ingin mengirim data yang mengubah status server seperti menambah data baru
+   GET: Digunakan  ketika Anda ingin mengirim data yang digunakan untuk permintaan pencarian atau ingin berbagi data lebih mudah dengan tautan
+-    Cacheability
+  POST: Tidak bisa dicache karena data dikirimkan sebagai bagian dari body permintaan HTTP
+   GET: bisa dicache sehingga menghasilkan kinerja yang lebih baik di beberapa kasus.
+-    Kemudahan Penggunaan
+  POST: perlu lebih banyak pekerjaan untuk code nya untuk mengakses data karena data ga langsung di URL
+   GET: data dikirim ke URL dan dapat diakses mudah melalui objek 'request.GET'
+  
+ # Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+- XML (Extensible Markup Language)
+  Tujuan utama: menyusun dan mentransfer data terstruktur antara sistem yang berbeda
+  Struktur: menggunakan tag untuk menandai elemen data dan setiap elemen dapat memiliki atribut dan anak elemen.
+-JSON (JavaScript Object Notation)
+   Tujuan Utama: digunakan untuk pertukaran data ringan antara browser dan server serta antar aplikas web. digunakan juga dalam pengemabangan web dan API RESTful. 
+   Struktur: mengandalkan sintaksis objek dalam JavaScript, yang terdiri dari pasangan nama-nilai sehingga membuat lebih mudah dibaca oleh mesin dan manusia.
+- HTML (Hypertext Markup Language):
+  Tujuan Utama: digunakan untuk membuat struktur dan tampilan halaman web. digunakan juga untuk merender halaman web dalam peramban web. 
+   Struktur: menggunakan tag untuk menandai elem yang membentuk halaman web seperti teks, gambar, tautan, dan lainnya.
+
+# Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+1. Sintaksis lebih mudah dipahami
+Menggunakan sintaksis yang mirip dengan objek dalam JavaScript yang membuatnya mudah dibaca dan diural oleh manusia. 
+2. Ringan
+Format data yang ringan yang berarti bahwa data yang dikirim dalam format JSON cenderung memiliki ukuran yang lebih kecil dibandingkan formmat lain. 
+3. Dukungan luas
+Hampir semua bahasa pemrograman memiliki dukungan JSON. ini membuat format datanya interoperabel yang berarti Anda mudah mengirim dan memnerima data JSON. 
+4. Mendukung tipe data
+JSON mendukung berbagai jenis data, termasuk string, angka, boolean, bojek, dan larik. Hal ini membantu agar lebih fleksibilitas dalam merepresntasikan data. 
+5. Kode JavaScript yang bersih
+JSON dapat digunakan dalam kode Java Script tanpa perlu proses parsing yang rumit. Ini memungkinkan aplikasi yang lebih bersih dan efisien, terutama ketika menghubungkan antara klien dan server.
+
+Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
  Melakukan add-commit-push ke GitHub.
