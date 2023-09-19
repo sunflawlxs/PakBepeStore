@@ -661,7 +661,7 @@ JSON mendukung berbagai jenis data, termasuk string, angka, boolean, bojek, dan 
 5. Kode JavaScript yang bersih
 JSON dapat digunakan dalam kode Java Script tanpa perlu proses parsing yang rumit. Ini memungkinkan aplikasi yang lebih bersih dan efisien, terutama ketika menghubungkan antara klien dan server.
 
-Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
+# Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.
 ```Link 1```
 <img width="1259" alt="Screen Shot 2023-09-19 at 20 17 44" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/44e8c134-705f-41b4-aecf-7abc0d649a4c">
 <img width="1259" alt="Screen Shot 2023-09-19 at 20 17 48" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/b2c5bf9f-6209-4282-bbdc-fbcf52c18d33">
