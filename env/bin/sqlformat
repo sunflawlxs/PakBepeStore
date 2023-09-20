@@ -1,4 +1,4 @@
-#!/Users/user/Documents/TUGAS2PBP/PakBepeStore/env/bin/python3
+#!/Users/user/Documents/shopping_list/env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
