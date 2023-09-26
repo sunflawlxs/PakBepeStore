@@ -711,7 +711,7 @@ git push -u origin main
 ```
 </details>
 
-</details>
+<details>
 <summary> TUGAS 4</summary>
 1. Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
 
