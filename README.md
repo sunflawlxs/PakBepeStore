@@ -877,6 +877,9 @@ path('logout/', logout_user, name='logout'),
 ...
 ```
 2. Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
+<img width="628" alt="Screen Shot 2023-09-26 at 20 04 08" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/9d407390-f26d-4d14-a53b-0065402a9ae8">
+<img width="628" alt="Screen Shot 2023-09-26 at 20 03 54" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/4be0960b-b196-4719-9b2e-32072e7d71cc">
+
 
 3. Menghubungkan model Item dengan User.
 - buka ```models.py``` dan tambahkan kode
@@ -1023,6 +1026,12 @@ Penggunaan cookies dalam pengembangan web dapat aman jika diimplementasikan deng
 3. Cross-Site Scripting(XSS): Serangan XSS dapat menyebabkan pengeksekusian skrip berbahaya dalam konteks pengguna. Jika skrip ini dapat mengakses atau memodifikasi cookies pengguna, itu dapat membahayakan data pengguna.
 4. Cross-Site Request Forgery(CSRF): Serangan CSRF dapat memanipulasi pengguna untuk melakukan tindakan tanpa sepengetahuan mereka. Jika cookies digunakan untuk otentikasi, serangan CSRF dapat menyebabkan tindakan berbahaya yang dilakukan atas nama pengguna.
  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
  Melakukan add-commit-push ke GitHub.
+
+# BONUS
+<img width="628" alt="Screen Shot 2023-09-26 at 20 04 08" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/f4ec9421-bb5e-4b44-84b0-ebe534dc65fe">
+<img width="628" alt="Screen Shot 2023-09-26 at 20 03 54" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/a958c372-c09d-4785-b24d-95b163abd064">
+
 
 </details>
