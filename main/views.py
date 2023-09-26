@@ -1,23 +1,24 @@
-from main.models import Product
+import datetime
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render
+from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from main.forms import ProductForm
-from django.urls import reverse
-import datetime
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.core import serializers
-from django.shortcuts import redirect
+from django.urls import reverse
+from main.models import Product
+from django.contrib import messages
+from django.db.models import Sum
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib import messages  
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login')
 def show_main(request):
     products = Product.objects.filter(user=request.user)
+    total_amount = Product.objects.filter(user=request.user).aggregate(total_amount=Sum('amount'))['total_amount']
+    jumlah_products = total_amount if total_amount is not None else 0  
 
     # if products:
     #     last_products = products.last()
@@ -31,6 +32,7 @@ def show_main(request):
         'class': 'PBP D', # Kelas PBP kamu
         'NPM': '2206824943',
         'products': products,
+        'jumlah_products': str(jumlah_products),
         'last_login': request.COOKIES['last_login'],
       #  'last_products': last_products,
     }
@@ -97,3 +99,40 @@ def show_xml_by_id(request, id):
 def show_json_by_id(request, id):
     data = Product.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def add_amount(request, id):
+    try:
+        products = Product.objects.get(pk=id)
+        if request.method == 'GET':
+            products.amount += 1
+            products.save()
+            messages.success(request, 'Sukses Menambah Amount.')
+            return redirect('main:show_main')
+        return redirect('main:show_main')
+    except Product.DoesNotExist:
+        raise Http404("Item tidak ditemukan.")
+    
+def remove_amount(request, id):
+    try:
+        products = Product.objects.get(pk=id)
+        if request.method == 'GET':
+            products.amount -= 1
+            products.save()
+            if products.amount == 0:
+                products.delete()
+            messages.success(request, 'Sukses Mengurangi Amount.')
+            return redirect('main:show_main')
+        return redirect('main:show_main')
+    except Product.DoesNotExist:
+        raise Http404("Item tidak ditemukan.")
+
+def delete_product(request, id):
+    try:
+        products = Product.objects.get(pk=id)
+        if request.method == 'GET':
+            products.delete()
+            messages.success(request, 'Sukses Menghapus Item.')
+            return redirect('main:show_main')
+        return redirect('main:show_main')
+    except Product.DoesNotExist:
+        raise Http404("Item tidak ditemukan.")
