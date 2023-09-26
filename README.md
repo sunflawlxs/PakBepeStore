@@ -940,7 +940,9 @@ context = {
     'products': products,
     'last_login': request.COOKIES['last_login'],
 }
-- kemudian ubah fungsi ```logout_user``` menjadi kode ini 
+```
+- kemudian ubah fungsi ```logout_user``` menjadi kode ini
+
 ```
 def logout_user(request):
     logout(request)
@@ -948,7 +950,9 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 ```
-- dan tambahkan main.html 
+
+- dan tambahkan main.html
+
 ```
 ...
 <h5>Sesi terakhir login: {{ last_login }}</h5>
