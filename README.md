@@ -712,7 +712,7 @@ git push -u origin main
 </details>
 
 </details>
-<summary> TUGAS 4</summary>
+<summary>TUGAS 4</summary>
 1. Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
 - Menyalakan virtual environment di terminal. 
 - Kemudian kita membuka views.py pada subdirektori main dan buat fungsi ```register``` yang menerima parameter ```request``` dan tambahkan import. 
@@ -1017,4 +1017,4 @@ Penggunaan cookies dalam pengembangan web dapat aman jika diimplementasikan deng
  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
  Melakukan add-commit-push ke GitHub.
 
-
+</details>
