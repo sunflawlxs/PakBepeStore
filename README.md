@@ -712,15 +712,19 @@ git push -u origin main
 </details>
 
 </details>
-<summary>TUGAS 4</summary>
+<summary> TUGAS 4</summary>
 1. Mengimplementasikan fungsi registrasi, login, dan logout untuk memungkinkan pengguna untuk mengakses aplikasi sebelumnya dengan lancar.
+
 - Menyalakan virtual environment di terminal. 
-- Kemudian kita membuka views.py pada subdirektori main dan buat fungsi ```register``` yang menerima parameter ```request``` dan tambahkan import. 
+
+- Kemudian kita membuka views.py pada subdirektori main dan buat fungsi ```register``` yang menerima parameter ```request``` dan tambahkan import.
+
 ```
 from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
 ```
+
 ```
 def register(request):
     form = UserCreationForm()
