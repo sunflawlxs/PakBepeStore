@@ -1010,7 +1010,7 @@ Pengalaman Pengguna: Otorisasi juga dapat digunakan untuk menciptakan pengalaman
 Dengan menggunakan autentikasi dan otorisasi dengan benar dalam Django, Anda dapat membangun aplikasi web yang aman, terorganisir, dan sesuai dengan persyaratan bisnis atau regulasi yang berlaku.
 
 
- Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
+ # Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?
  Cookies adalah mekanisme penyimpanan data kecil yang digunakan dalam konteks aplikasi web untuk menyimpan informasi di sisi klien (pada peramban pengguna). Mereka digunakan untuk berbagai tujuan, termasuk mengelola sesi pengguna, melacak preferensi pengguna, dan menyimpan informasi sementara yang dapat digunakan kembali di seluruh sesi pengguna. Dalam konteks Django, cookies sering digunakan untuk mengelola data sesi pengguna.
 Djanggo menggunakan cookies dengan:
 1. Pengaturan Cookie Session: Pertama-tama, Anda perlu mengaktifkan dukungan sesi cookie dalam pengaturan Django Anda. Ini biasanya dilakukan dengan mengkonfigurasi SESSION_ENGINE dan SESSION_COOKIE_NAME dalam berkas settings.py
