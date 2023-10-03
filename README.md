@@ -1175,29 +1175,31 @@ Source:
 <br>
 
 ## **B. Penjelasan HTML5 Tag**
-| Tag | Penjelasan |
-| --- | --- |
-| <a> | Mendefinisikan hyperlink |
-| <abbr> | Mendefinisikan bentuk singkatan dari kata atau frasa yang panjang |
-| <address> | Menentukan informasi kontak penulis |
-| <area> | Mendefinisikan area tertentu dalam peta gambar |
-| `<!--...-->` | Menentukan komentar |
-| <!DOCTYPE> | Menentukan jenis dokumen |
-| <div> | Menentukan bagian dalam dokumen |
-| <detail> | Menentukan informasi tambahan yang dapat diperoleh pengguna |
-| <header> | Menentukan informasi tentang dokumen |
-| <q> | Menentukan variabel |
-| <select> | Menentukan daftar yang dapat dipilih |
-| <spacer> | Menentukan white space |
-| <style> | Menentukan definisi gaya |
-| <table> | Menentukan tabel |
+HTML5, versi terbaru dari bahasa markup HTML, memperkenalkan banyak tag baru dan perubahan dalam struktur dokumen web. Berikut adalah beberapa tag HTML5 yang umum dan penting yang saya ketahui:
 
-<br>
+<header>: Digunakan untuk mendefinisikan bagian atas atau kepala dari sebuah dokumen HTML. Biasanya berisi logo, judul, menu navigasi, atau elemen-elemen lain yang berkaitan dengan kepala halaman.
 
-Source:
-* https://www.tutorialrepublic.com/html-reference/html5-tags.php
-* https://www.tutorialspoint.com/html5/html5_tags.htm
-<br>
+<nav>: Digunakan untuk mengelompokkan elemen-elemen yang berhubungan dengan navigasi, seperti menu utama atau menu samping.
+
+<section>: Menyediakan cara untuk mengelompokkan konten yang terkait dalam suatu halaman web. Biasanya memiliki judul atau heading yang menggambarkan konten tersebut.
+
+<article>: Digunakan untuk mengelompokkan konten independen dalam sebuah halaman, seperti berita, posting blog, atau artikel.
+
+<aside>: Menandakan konten yang berhubungan dengan konten di sekitarnya, namun dapat dianggap sebagai konten tambahan atau sekunder. Biasanya digunakan untuk sisibar, iklan, atau konten terkait lainnya.
+
+<footer>: Mendefinisikan bagian bawah dari sebuah dokumen HTML atau bagian bawah dari elemen tertentu. Biasanya berisi informasi penulis, tautan ke halaman lain, atau informasi kontak.
+
+<figure> dan <figcaption>: <figure> digunakan untuk mengelompokkan elemen-elemen media seperti gambar, video, atau ilustrasi lainnya bersama dengan <figcaption>, yang digunakan untuk memberikan deskripsi atau keterangan untuk elemen media tersebut.
+
+<main>: Menandakan konten utama dalam sebuah dokumen HTML. Hanya boleh ada satu elemen <main> dalam satu halaman.
+
+<video> dan <audio>: Digunakan untuk menyisipkan dan mengontrol file multimedia seperti video dan audio di halaman web.
+
+<canvas>: Memungkinkan pembuatan gambar, grafik, dan animasi yang bisa diatur melalui kode JavaScript. Berguna untuk pengembangan game web dan visualisasi data.
+
+<input type="date">, <input type="email">, <input type="url">, dll.: Elemen-elemen input HTML5 yang memungkinkan input yang lebih spesifik, seperti tanggal, alamat email, atau URL. Ini memungkinkan validasi input yang lebih baik dan pengalaman pengguna yang lebih baik.
+
+<progress>: Digunakan untuk menunjukkan kemajuan dalam tugas yang sedang berlangsung, seperti pengunggahan berkas atau proses pengunduhan.
 
 ## **C. Perbedaan Margin dan *Padding***
 ![COBA](/photos/marginpadding.png)
