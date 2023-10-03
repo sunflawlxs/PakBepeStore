@@ -1035,3 +1035,106 @@ Penggunaan cookies dalam pengembangan web dapat aman jika diimplementasikan deng
 
 
 </details>
+
+
+
+<details>
+<summary> TUGAS 5</summary>
+   
+# Manfaat Element Selector
+Element selector adalah bagian dari bahasa pemrograman CSS (Cascading Style Sheets) yang digunakan untuk memilih elemen HTML tertentu dan mendefinisikan gaya atau tampilan yang akan diterapkan pada elemen tersebut. Terdapat beberapa jenis selector yang berbeda dalam CSS, dan setiap jenis memiliki manfaat dan waktu yang tepat untuk digunakan. Berikut adalah penjelasan mengenai manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya:
+
+Selector Universal (*):
+Manfaat: Selector universal memilih semua elemen dalam dokumen HTML.
+Waktu yang tepat: Digunakan dengan hati-hati karena dapat memengaruhi semua elemen dalam halaman. Biasanya digunakan untuk mereset atau mengatur nilai default untuk semua elemen.
+
+Selector Elemen (Element Selector):
+Manfaat: Selector elemen memilih semua elemen HTML dengan tag yang spesifik.
+Waktu yang tepat: Digunakan ketika Anda ingin mengganti gaya atau tampilan semua elemen dengan tag yang sama dalam halaman.
+
+Selector Kelas (Class Selector):
+Manfaat: Selector kelas memilih semua elemen HTML yang memiliki atribut class tertentu.
+Waktu yang tepat: Berguna ketika Anda ingin menerapkan gaya yang sama pada beberapa elemen yang memiliki kelas yang sama.
+
+Selector ID (ID Selector):
+Manfaat: Selector ID memilih elemen HTML yang memiliki atribut id tertentu.
+Waktu yang tepat: Cocok untuk menerapkan gaya atau perilaku yang unik pada satu elemen tertentu dalam halaman. ID seharusnya unik dalam satu halaman.
+
+# HTML5 Tag
+| Tag | Penjelasan |
+| --- | --- |
+| <a> | Mendefinisikan hyperlink |
+| <abbr> | Mendefinisikan bentuk singkatan dari kata atau frasa yang panjang |
+| <address> | Menentukan informasi kontak penulis |
+| <area> | Mendefinisikan area tertentu dalam peta gambar |
+| `<!--...-->` | Menentukan komentar |
+| <!DOCTYPE> | Menentukan jenis dokumen |
+| <div> | Menentukan bagian dalam dokumen |
+| <detail> | Menentukan informasi tambahan yang dapat diperoleh pengguna |
+| <header> | Menentukan informasi tentang dokumen |
+| <q> | Menentukan variabel |
+| <select> | Menentukan daftar yang dapat dipilih |
+| <spacer> | Menentukan white space |
+| <style> | Menentukan definisi gaya |
+| <table> | Menentukan tabel |
+
+<br>
+
+Source:
+* https://www.tutorialrepublic.com/html-reference/html5-tags.php
+* https://www.tutorialspoint.com/html5/html5_tags.htm
+<br>
+
+# Perbedaan Margin dan Padding 
+Margin dan padding adalah dua properti dalam CSS yang digunakan untuk mengatur ruang di sekitar elemen HTML, tetapi mereka memiliki peran yang berbeda dan diterapkan pada tempat yang berbeda dalam struktur elemen tersebut. Berikut adalah perbedaan antara margin dan padding:
+
+Margin:
+Margin adalah ruang di luar elemen: Margin adalah jarak antara batas elemen dan elemen-elemen di sekitarnya, seperti elemen-elemen tetangga atau batas kontainer. Margin digunakan untuk mengendalikan jarak antara elemen dan elemen lain di sekitarnya.
+Tidak memiliki latar belakang atau warna: Margin tidak mempengaruhi latar belakang elemen atau warnanya. Ini adalah area transparan yang berfungsi sebagai "ruang kosong" di sekitar elemen.
+Mengubah margin dapat memengaruhi tata letak elemen lain: Memperbesar margin suatu elemen dapat menggeser elemen-elemen tetangga yang berdekatan dengannya.
+
+Padding:
+Padding adalah ruang di dalam elemen: Padding adalah jarak antara batas elemen dan konten dalam elemen itu sendiri. Padding digunakan untuk mengendalikan jarak antara konten elemen dan batas elemen.
+Pengaruh pada latar belakang atau warna: Padding akan memengaruhi latar belakang elemen dan warna elemen itu sendiri. Ketika padding diberikan, warna atau gambar latar belakang akan memperpanjang ke dalam padding area.
+Mengubah padding tidak memengaruhi tata letak elemen lain: Memperbesar padding suatu elemen tidak akan mempengaruhi elemen-elemen tetangga. Ini hanya memengaruhi ruang di dalam elemen tersebut.
+
+
+# Perbedan Tailwind CSS dan Bootstrap
+Tailwind CSS dan Bootstrap adalah dua framework CSS populer yang digunakan untuk membangun tampilan web responsif dan estetis. Berikut adalah perbedaan antara keduanya dan kapan sebaiknya Anda menggunakan Bootstrap daripada Tailwind, dan sebaliknya:
+
+Perbedaan antara Tailwind CSS dan Bootstrap:
+
+Pendekatan Styling:
+
+Tailwind CSS: Tailwind menggunakan pendekatan "utility-first", di mana Anda membangun tampilan dengan menggabungkan kelas-kelas utilitas yang telah ditentukan sebelumnya dalam CSS. Ini memungkinkan Anda untuk membuat tampilan yang sangat disesuaikan dengan menggabungkan kelas-kelas sesuai kebutuhan.
+Bootstrap: Bootstrap menggunakan pendekatan "component-based", di mana komponen-komponen telah dirancang dan ditentukan sebelumnya. Anda menggunakannya dengan mengaitkan kelas-kelas yang telah ada ke elemen HTML.
+Kustomisasi:
+
+Tailwind CSS: Sangat fleksibel dan memungkinkan tingkat kustomisasi yang tinggi. Anda dapat dengan mudah menyesuaikan tampilan dengan mengedit konfigurasi atau menambahkan kelas-kelas utilitas khusus.
+Bootstrap: Lebih terstruktur dan terbatas dalam hal kustomisasi. Untuk mengubah tampilan yang signifikan, Anda mungkin perlu menyesuaikan atau menimpa gaya Bootstrap yang ada.
+Ukuran Kode:
+
+Tailwind CSS: Hasil akhirnya dapat menghasilkan kode HTML yang lebih besar karena penggunaan banyak kelas utilitas. Namun, dengan teknik pengemasan (purging), Anda dapat menghilangkan kode yang tidak terpakai.
+Bootstrap: Biasanya menghasilkan kode yang lebih ringkas karena penggunaan komponen yang telah dirancang sebelumnya. Namun, Anda mungkin hanya menggunakan sebagian kecil dari komponen Bootstrap yang tersedia.
+Kapan sebaiknya Anda menggunakan Bootstrap daripada Tailwind, dan sebaliknya:
+
+Bootstrap sebaiknya digunakan jika:
+
+Anda memerlukan pengembangan cepat dan tidak ingin menghabiskan banyak waktu untuk menyesuaikan tampilan.
+Anda bekerja dalam tim besar dan memerlukan pedoman yang jelas dalam hal tampilan dan interaksi.
+Anda ingin menghindari kebingungan dalam memilih kelas-kelas utilitas dan lebih suka menggunakan komponen yang telah dirancang sebelumnya.
+Anda memiliki pengalaman dengan Bootstrap atau tim Anda telah terbiasa menggunakannya.
+Tailwind CSS sebaiknya digunakan jika:
+
+Anda ingin tingkat kustomisasi yang tinggi dan tampilan yang sangat disesuaikan.
+Anda lebih suka mengkode tampilan secara langsung dengan menggabungkan kelas-kelas utilitas.
+Anda ingin menghindari kelebihan kode yang tidak terpakai dengan menggunakan teknik pengemasan.
+Anda ingin mendekati tampilan dengan cara yang lebih alami, tanpa harus mengikuti gaya tertentu.
+Kesimpulannya, pemilihan antara Bootstrap dan Tailwind CSS bergantung pada kebutuhan proyek Anda, tingkat kustomisasi yang diinginkan, dan preferensi Anda dalam pengembangan web. Keduanya memiliki kelebihan dan kelemahan masing-masing, dan tidak ada pilihan yang satu benar-benar lebih baik daripada yang lain dalam semua situasi.
+
+
+
+
+
+
+</details>
