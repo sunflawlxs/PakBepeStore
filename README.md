@@ -1135,115 +1135,50 @@ Anda ingin menghindari kelebihan kode yang tidak terpakai dengan menggunakan tek
 Anda ingin mendekati tampilan dengan cara yang lebih alami, tanpa harus mengikuti gaya tertentu.
 Kesimpulannya, pemilihan antara Bootstrap dan Tailwind CSS bergantung pada kebutuhan proyek Anda, tingkat kustomisasi yang diinginkan, dan preferensi Anda dalam pengembangan web. Keduanya memiliki kelebihan dan kelemahan masing-masing, dan tidak ada pilihan yang satu benar-benar lebih baik daripada yang lain dalam semua situasi.
 
- <details></details>
-<summary>📋Assignment 5</summary>
-
-## **DAFTAR ISI**
-* [Manfaat Element Selector dan Penggunaan Waktunya](#a-manfaat-tiap-element-selector-dan-penggunaan-waktu-yang-tepatnya)
-* [Penjelasan HTML5 Tag](#b-penjelasan-html5-tag)
-* [Perbedaan Margin dan *Padding*](#c-perbedaan-margin-dan-padding)
-* [Perbedaan dan Penggunaan framework CSS Tailwind dan Bootstrap](#d-perbedaan-dan-penggunaan-framework-css-tailwind-serta-bootstrap)
-* [BONUS](#e-bonus-tugas-5)
-<hr>
-
-## **A. Manfaat Tiap Element Selector dan Penggunaan Waktu yang Tepatnya**
-#### **1. *Element Selector***
-* **Manfaat:**
-    * Dapat mengubah properti untuk semua elemen yang memiliki tag HTML yang sama atau dapat memilih elemen HTML berdasarkan nama elemen.
-    * Dapat mengaplikasikan style yang sama pada tiap elemen dengn jenis yang sama, contohnya seperti tag <p> atau `<h1>`.
-* **Penggunaan Waktu yang Tepat:**
-    * Ketika kita ingin mengubah style tiap elemen dengan jenis yang sama dan tidak ada class maupun ID khusus. 
-<br>
-
-#### **2. *ID Selector***
-* **Manfaat:**
-    * Dapat memilih elemen berdasarkan ID yang diberikan. IDnya unik dalam satu halaman web dan dapat ditambahkan pada halaman template HTML.
-* **Penggunaan Waktu yang Tepat:**
-    * Ketika ingin memberikan interaksi atau style khusus pada satu elemen tertentu.
-<br>
-
-#### **3. *Class Selector***
-* **Manfaat:**
-    * Dapat mengelompokkan elemen dengan karakteristik yang sama.
-    * Dapat memilih elemen berdasarkan nama class yang diberi.
-* **Penggunaan Waktu yang Tepat:**
-    * Ketika ingin memberikan style yang identik terhadap beberapa elemen dalam halaman.
-<br>
-
-Source:
-* https://www.w3schools.com/CSS/css_selectors.asp
-<br>
-
-## **B. Penjelasan HTML5 Tag**
-HTML5, versi terbaru dari bahasa markup HTML, memperkenalkan banyak tag baru dan perubahan dalam struktur dokumen web. Berikut adalah beberapa tag HTML5 yang umum dan penting yang saya ketahui:
-
-<header>: Digunakan untuk mendefinisikan bagian atas atau kepala dari sebuah dokumen HTML. Biasanya berisi logo, judul, menu navigasi, atau elemen-elemen lain yang berkaitan dengan kepala halaman.
-
-<nav>: Digunakan untuk mengelompokkan elemen-elemen yang berhubungan dengan navigasi, seperti menu utama atau menu samping.
-
-<section>: Menyediakan cara untuk mengelompokkan konten yang terkait dalam suatu halaman web. Biasanya memiliki judul atau heading yang menggambarkan konten tersebut.
-
-<article>: Digunakan untuk mengelompokkan konten independen dalam sebuah halaman, seperti berita, posting blog, atau artikel.
-
-<aside>: Menandakan konten yang berhubungan dengan konten di sekitarnya, namun dapat dianggap sebagai konten tambahan atau sekunder. Biasanya digunakan untuk sisibar, iklan, atau konten terkait lainnya.
-
-<footer>: Mendefinisikan bagian bawah dari sebuah dokumen HTML atau bagian bawah dari elemen tertentu. Biasanya berisi informasi penulis, tautan ke halaman lain, atau informasi kontak.
-
-<figure> dan <figcaption>: <figure> digunakan untuk mengelompokkan elemen-elemen media seperti gambar, video, atau ilustrasi lainnya bersama dengan <figcaption>, yang digunakan untuk memberikan deskripsi atau keterangan untuk elemen media tersebut.
-
-<main>: Menandakan konten utama dalam sebuah dokumen HTML. Hanya boleh ada satu elemen <main> dalam satu halaman.
-
-<video> dan <audio>: Digunakan untuk menyisipkan dan mengontrol file multimedia seperti video dan audio di halaman web.
-
-<canvas>: Memungkinkan pembuatan gambar, grafik, dan animasi yang bisa diatur melalui kode JavaScript. Berguna untuk pengembangan game web dan visualisasi data.
-
-<input type="date">, <input type="email">, <input type="url">, dll.: Elemen-elemen input HTML5 yang memungkinkan input yang lebih spesifik, seperti tanggal, alamat email, atau URL. Ini memungkinkan validasi input yang lebih baik dan pengalaman pengguna yang lebih baik.
-
-<progress>: Digunakan untuk menunjukkan kemajuan dalam tugas yang sedang berlangsung, seperti pengunggahan berkas atau proses pengunduhan.
-
-## **C. Perbedaan Margin dan *Padding***
-![COBA](/photos/marginpadding.png)
-| Margin | Padding |
-| --- | --- |
-| Mengosongkan area di sekitar border (transparan) | Mengosongkan area di sekitar konten (transparan) |
-| Ruang luar suatu elemen yaitu margin yang merupakan ruang di luar batas | Ruang dalam suatu elemen padding yaitu ruang dalam batas elemen |
-| Dapat berupa angka negatif atau float | Tidak boleh ada nilai-nilai negatif |
-| Mengatur margin menjadi otomatis | Tidak dapat mengatur padding menjadi otomatis |
-| Penataan style elemen seperti warna backgorund tidak memengaruhi margin | Padding dipengaruhi style suatu elemen seperti background |
-
-<br>
-
-Source:
-* https://www.geeksforgeeks.org/css-padding-vs-margin/
-<br>
-
-## **D. Perbedaan dan Penggunaan framework CSS Tailwind serta Bootstrap**
-| Tailwind | Bootstrap |
-| --- | --- |
-| Membangun tampilan dengan menggabungkan class-class utilitas yang telah didefinisikan sebelumnya | Menggunakan style dan komponen yang sudah didefinisikan, memiliki tampilan yang sudah jadi dan dapat digunakan langsung |
-| Memiliki file CSS yang lebih kecil dan memuat class-class utilitas yang ada | Memiliki file CSS yang lebih besar karena termasuk banyak komponen yang telah didefinisikan |
-| Memberikan fleksibilitas dan adaptabilitas tinggi terhadap proyek | Menghasilkan tampilan yang lebih konsisten di seluruh proyek karena memakai komponen yang sudah didefinisikan |
-| Memiliki pembelajaran lebih curam karena perlu pemahaman terhadap class-class utilitas yang tersedia dan cara menggabungkannya untuk mencapai tampilan yang kita inginkan | Memiliki pembelajaran yang lebih cepat untuk pemula karena dapat mulai dengan komponen yang sudah didefinisikan |
-
-<br>
-
-Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
-
-* ***Bootsrap:***
-    * Apabila ingin membangun situs web dengan cepat.
-    * 
-
-* ***Tailwind:***
-    * dsdsdsdsdsdsdss
-
-Source:
-* https://www.tutorialspoint.com/tailwind-css-vs-bootstrap
-* https://pbp-fasilkom-ui.github.io/ganjil-2024/docs/tutorial-4
-<br>
-
-## **E. BONUS TUGAS 5**
 
 
+## BONUS TUGAS 5**
+
+1. Menambahkan style pada create_item.html, login.html, main.html, dan register.html direktori main.
+2. Inventori di main.html ditampilkan menggunakan card
+```<div class="product">
+    {% for item in items %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item flex-v">Amount: {{item.amount}}
+                    <div>
+                        <a href="{% url 'main:add' item.id %}">
+                            <button class="secondary-button">
+                                Add
+                            </button>
+                        </a>
+                        <a href="{% url 'main:remove' item.id %}">
+                            <button class="secondary-button">
+                                Remove
+                            </button>
+                        </a>
+                    </div>
+                </li>
+                <li class="list-group-item">Price: {{item.price}}</li>
+            </ul>
+            <div class="card-body">
+                <a href="{% url 'main:delete' item.id %}">
+                    <button class="primary-button">Delete</button>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+Mengerjakan bonus dengan menambahkan kode berikut di style main.html
+.card:last-child, .card:last-child .flex-v {
+    background: #1569C7;
+}
+```
+Referensi: https://codepolitan.com/blog/perbedaan-bootstrap-dan-tailwind https://getbootstrap.com/docs/4.0/components/card/
 
 
 
