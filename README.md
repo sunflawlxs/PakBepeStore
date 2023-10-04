@@ -1066,20 +1066,20 @@ Waktu yang tepat: Cocok untuk menerapkan gaya atau perilaku yang unik pada satu 
 
 | Tag | Penjelasan |
 | --- | --- |
-| <a> | Mendefinisikan hyperlink |
-| <abbr> | Mendefinisikan bentuk singkatan dari kata atau frasa yang panjang |
-| <address> | Menentukan informasi kontak penulis |
-| <area> | Mendefinisikan area tertentu dalam peta gambar |
+| `<a>` | Mendefinisikan hyperlink |
+| `<abbr>` | Mendefinisikan bentuk singkatan dari kata atau frasa yang panjang |
+| `<address>` | Menentukan informasi kontak penulis |
+| `<area> `| Mendefinisikan area tertentu dalam peta gambar |
 | `<!--...-->` | Menentukan komentar |
-| <!DOCTYPE> | Menentukan jenis dokumen |
-| <div> | Menentukan bagian dalam dokumen |
-| <detail> | Menentukan informasi tambahan yang dapat diperoleh pengguna |
-| <header> | Menentukan informasi tentang dokumen |
-| <q> | Menentukan variabel |
-| <select> | Menentukan daftar yang dapat dipilih |
-| <spacer> | Menentukan white space |
-| <style> | Menentukan definisi gaya |
-| <table> | Menentukan tabel |
+| `<!DOCTYPE>` | Menentukan jenis dokumen |
+|` <div> `| Menentukan bagian dalam dokumen |
+| `<detail>` | Menentukan informasi tambahan yang dapat diperoleh pengguna |
+| `<header>` | Menentukan informasi tentang dokumen |
+| `<q>` | Menentukan variabel |
+| `<select>` | Menentukan daftar yang dapat dipilih |
+| `<spacer>` | Menentukan white space |
+| `<style>` | Menentukan definisi gaya |
+| `<table>` | Menentukan tabel |
 
 <br>
 
