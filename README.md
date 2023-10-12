@@ -1183,3 +1183,97 @@ Referensi: https://codepolitan.com/blog/perbedaan-bootstrap-dan-tailwind https:/
 
 
 </details>
+
+<details>
+<summary> TUGAS 6</summary>
+
+# Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+Asynchronous programming dan synchronous programming adalah dua paradigma pemrograman yang berbeda dalam cara menjalankan tugas-tugas atau operasi-operasi di dalam program. Berikut ini adalah perbedaan utama antara keduanya:
+
+1. Synchronous Programming (Pemrograman Sinkron):
+   - dalam synchronous programming, operasi-operasi dieksekusi secara berurutan, satu demi satu. Artinya, program akan menunggu operasi tertentu selesai sebelum melanjutkan ke operasi berikutnya.
+   - Ini dapat mengakibatkan program menjadi lambat jika ada operasi yang memakan waktu lama karena program harus menunggu sampai operasi tersebut selesai sebelum bisa melanjutkan.
+
+2. Asynchronous Programming (Pemrograman Asinkron):
+   - Dalam asynchronous programming, operasi-operasi dieksekusi secara bersamaan tanpa harus menunggu operasi sebelumnya selesai.
+   - Biasanya digunakan dalam situasi di mana ada banyak tugas yang harus berjalan secara bersamaan, seperti dalam pemrosesan paralel atau saat mengakses sumber daya jarak jauh seperti jaringan atau penyimpanan.
+   - Menggunakan konsep seperti callback, promise, atau async/await untuk mengatur tugas-tugas yang asinkron dan menangani hasilnya saat sudah tersedia.
+
+Contoh penggunaan asynchronous programming termasuk pemrograman berbasis jaringan seperti HTTP requests, pemrosesan data besar, atau penggunaan antarmuka pengguna yang tidak memblokir program secara keseluruhan saat menunggu input pengguna.
+
+Perbedaan utama adalah bahwa asynchronous programming memungkinkan program untuk tetap responsif dan efisien saat menangani tugas-tugas yang memakan waktu, sementara synchronous programming menjalankan tugas secara berurutan dan dapat menghentikan program untuk sementara waktu saat menunggu tugas selesai.
+
+# Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Paradigma event-driven programming adalah pendekatan pemrograman di mana program merespons kejadian (events) yang terjadi. Sebuah kejadian dapat menjadi tindakan pengguna, seperti mengklik tombol pada antarmuka pengguna, memasukkan teks ke dalam kotak input, atau menggulir halaman web. Pada paradigma ini, program tidak berjalan secara linier dari atas ke bawah, melainkan menunggu kejadian yang terjadi, dan ketika suatu kejadian terjadi, program akan menjalankan kode yang telah ditentukan untuk menangani kejadian tersebut.
+
+Contoh penerapan paradigma event-driven programming dalam JavaScript dan AJAX adalah ketika Anda mengembangkan sebuah halaman web yang memungkinkan pengguna untuk mengklik tombol yang akan memicu permintaan asinkron melalui AJAX. Berikut adalah langkah-langkah penerapannya:
+
+Mendefinisikan elemen HTML: Anda akan mendefinisikan elemen HTML yang akan bertindak sebagai tombol yang dapat diklik oleh pengguna. Misalnya, Anda dapat memiliki elemen <button>.
+
+Menambahkan event listener: Anda akan menambahkan event listener ke elemen tersebut menggunakan JavaScript. Event listener ini akan mendengarkan peristiwa "klik" pada tombol tersebut.
+
+Ketika pengguna mengklik tombol, event listener akan merespons dengan menjalankan kode yang ditentukan di dalamnya. Pada contoh di atas, ketika tombol diklik, kode di dalam fungsi event listener akan dijalankan, dan Anda dapat memicu permintaan AJAX untuk berinteraksi dengan server secara asinkron.
+Dengan pendekatan ini, program Anda merespons kejadian (klik tombol) dan menjalankan tindakan yang sesuai (permintaan AJAX) hanya ketika kejadian tersebut terjadi, sehingga membuat aplikasi web Anda lebih responsif dan interaktif. Ini adalah salah satu contoh yang umum dari paradigma event-driven programming dalam pengembangan web menggunakan JavaScript dan AJAX.
+
+# Jelaskan penerapan asynchronous programming pada AJAX.
+Penerapan asynchronous programming pada AJAX (Asynchronous JavaScript and XML) sangat penting karena AJAX dirancang untuk melakukan komunikasi asinkron dengan server tanpa mengganggu tampilan atau perilaku halaman web. Dalam konteks AJAX, asynchronous programming memungkinkan halaman web untuk tetap responsif selama permintaan data atau informasi dari server dilakukan. Berikut adalah cara penerapan asynchronous programming pada AJAX:
+
+1. **Membuat objek XMLHttpRequest**: Langkah pertama dalam penerapan asynchronous programming pada AJAX adalah membuat objek XMLHttpRequest. Objek ini adalah kunci untuk berkomunikasi dengan server secara asinkron. Berikut adalah contoh cara membuat objek XMLHttpRequest:
+
+   ```javascript
+   var xhr = new XMLHttpRequest();
+   ```
+
+2. **Menentukan tindakan yang akan diambil saat permintaan selesai**: Anda harus menentukan tindakan yang akan diambil ketika permintaan ke server telah selesai. Ini biasanya dilakukan dengan menambahkan event listener ke objek XMLHttpRequest untuk mengawasi perubahan status permintaan.
+
+   ```javascript
+   xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+           // Kode di sini akan dijalankan ketika permintaan selesai dengan sukses
+           var responseData = xhr.responseText;
+           // Anda dapat memproses data yang diterima dari server di sini
+       }
+   };
+   ```
+
+   Dalam contoh di atas, `onreadystatechange` akan memicu fungsi ketika permintaan telah selesai (`readyState` adalah 4) dan status HTTP adalah 200, yang menunjukkan sukses.
+
+3. **Mengirim permintaan ke server**: Anda harus mengirim permintaan ke server. Ini dilakukan dengan menggunakan metode `.open()` untuk menentukan metode HTTP dan URL target, lalu metode `.send()` untuk mengirim permintaan.
+
+   ```javascript
+   xhr.open("GET", "https://example.com/data", true); // true menandakan permintaan asinkron
+   xhr.send();
+   ```
+
+   Pada contoh di atas, kami mengirim permintaan GET asinkron ke "https://example.com/data".
+
+4. **Menangani respons dari server**: Respons dari server akan diterima melalui properti `responseText` pada objek XMLHttpRequest. Anda kemudian dapat mengambil data yang diterima dan menggunakannya sesuai kebutuhan.
+
+   ```javascript
+   var responseData = xhr.responseText;
+   // Proses atau tampilkan data dari server di sini
+   ```
+
+Dengan menerapkan asynchronous programming pada AJAX, Anda memastikan bahwa permintaan ke server dapat dijalankan di latar belakang, sehingga halaman web tetap responsif dan tidak terblokir saat menunggu respons dari server. Ini sangat berguna dalam pengembangan aplikasi web yang mengandalkan komunikasi dengan server, seperti pengambilan data dinamis tanpa harus me-refresh halaman.
+
+# Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+Perbandingan antara Fetch API dan library jQuery untuk penerapan AJAX memiliki beberapa aspek yang perlu diperhatikan. Berikut adalah perbandingan antara keduanya:
+
+Kompleksitas dan Ukuran: Fetch API adalah bagian dari standar JavaScript modern, sedangkan jQuery adalah library pihak ketiga yang lebih besar. jQuery memiliki fitur dan utilitas tambahan yang mungkin tidak diperlukan dalam proyek tertentu, sehingga ukurannya lebih besar daripada Fetch API. Jika ukuran file dan efisiensi adalah perhatian, Fetch API mungkin lebih unggul.
+
+Kemampuan: Fetch API didesain khusus untuk mengambil dan mengirim data melalui HTTP, sementara jQuery adalah library yang memiliki banyak fungsi lain selain AJAX, seperti animasi, manipulasi DOM, dan lainnya. Jadi, Fetch API lebih fokus dan terbatas pada fitur-fitur HTTP, sementara jQuery lebih lengkap.
+
+Kompatibilitas dan Dukungan Browser: jQuery memiliki dukungan yang lebih luas untuk browser yang lebih lama. Ini membuatnya lebih mudah untuk mengembangkan aplikasi web yang harus berjalan pada browser lama. Fetch API lebih modern dan mungkin memerlukan polyfill atau penggunaan alternatif jika Anda harus mendukung browser lama.
+
+Kemampuan Promises: Fetch API mengembalikan objek Promise, yang memungkinkan untuk menggunakan async/await untuk mengelola permintaan secara lebih jelas dan mudah dibaca. Sementara jQuery menggunakan callback untuk menangani respons, yang dapat menghasilkan callback hell (nesting yang dalam dan sulit dibaca) jika tidak dikelola dengan baik.
+
+Penyesuaian: Fetch API memberikan lebih banyak kontrol dan fleksibilitas dalam mengelola permintaan dan respons, dan Anda dapat menyesuaikannya dengan lebih baik sesuai kebutuhan proyek Anda. jQuery, di sisi lain, abstrak dalam banyak kasus.
+
+oleh karena itu, saya  menginginkan kontrol yang lebih besar, berfokus pada AJAX, dan lebih memperhatikan efisiensi, Fetch API adalah pilihan yang baik. Namun, jika saya  bekerja dengan proyek yang lebih besar yang memerlukan banyak fitur tambahan seperti animasi dan manipulasi DOM, atau jika Anda harus mendukung browser lama, maka jQuery dapat menjadi pilihan yang lebih nyaman dan komprehensif.
+
+# Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
+
+
+
+</details>
