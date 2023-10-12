@@ -24,7 +24,7 @@
         box-sizing: border-box;
     }
 
-    header {
+    header, #amount-message {
         margin: 20px 0;
         padding: 0 50px;
         text-align: center;
@@ -39,15 +39,16 @@
     .product {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start;
         padding: 0 50px;
     }
 
     .card {
         width: 250px;
-        flex-basis: calc(33.33% - 20px);
+        flex: 0 0 calc(33.33% - 20px);
         background: #fff;
         margin-bottom: 20px; /* Jarak antara kartu */
+        margin-right: 20px;
     }
 
     .card:last-child, .card:last-child .flex-v {
@@ -67,6 +68,10 @@
         text-align: center; /* Mengatur teks ke tengah tombol */
     }
 
+    button:hover {
+        background: rgba(231, 161, 176, 1);
+    }
+
     .primary-button {
         width: 100%;
         background: #d5647c;
@@ -83,6 +88,10 @@
         background-color: #fff;
     }
 
+    #btn_add_item {
+        width: 200px;
+    }
+
     .btn-outline-success:hover {
         border-color: #d5647c;
         background: rgba(231, 161, 176, 1);
@@ -91,14 +100,14 @@
     .flex-v {
         display: flex;
         justify-content: space-between;
-        align-products: center;
+        align-items: center;
     }
 
 </style>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><h3 style="font-family: 'Lucida bright';">PakBepeStore</h3></a>
+        <a class="navbar-brand" href="#"><h3 style="font-family: 'Lucida bright';">TOKO PBP SABRINA</h3></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -114,53 +123,155 @@
 
 <body>
     <header>
-        <h2 style="font-family: 'Lucida bright';">Halo, Selamat datang di PakBepeStore!</h2>
+        <h2 style="font-family: 'Lucida bright';">Halo, {{ username }}!</h2>
         <p>Sesi terakhir login: {{ last_login }}</p>
-        <h4>Kamu menyimpan {{ jumlah_products }} item pada aplikasi ini</h4>
-        {% if messages %}
-            {% for message in messages %}
-                <h5>{{ message }}</h5>
-            {% endfor %}
-        {% endif %}
     </header>
-    
-    <div class="product">
-        {% for product in products %}
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{product.name}}</h5>
-                    <p class="card-text">{{product.description}}</p>
-                    <p class="card-text">Price: Rp{{product.price}}</p>
+
+    <div id="amount-message">
+    </div>
+
+    <div class="product" id="product">
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-product flex-v">Amount: {{product.amount}}
-                        <div>
-                            <a href="{% url 'main:add' product.id %}">
-                                <button class="secondary-button">
-                                    Add
-                                </button>
-                            </a>
-                            <a href="{% url 'main:remove' product.id %}">
-                                <button class="secondary-button">
-                                    Remove
-                                </button>
-                            </a>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
                         </div>
-                    </li>
-                </ul>
-                <div class="card-body">
-                    <a href="{% url 'main:delete' product.id %}">
-                        <button class="primary-button">Delete</button>
-                    </a>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
                 </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
 
     <footer>
-        <a href="{% url 'main:create_product' %}">
-            <button class="btn btn-outline-success">Add New Product</button>
-        </a>
+        <button type="button" class="btn btn-outline-success" id="btn_add_item" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin: 20px;">Add New Item</button>
     </footer>
 </body>
+
+<script>
+async function getItems() {
+    return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+}
+async function refreshItems() {
+    const items = await getItems()
+    const jumlahItem = items.length
+    let htmlString1 = `<h4>Kamu menyimpan ${jumlahItem} item pada aplikasi ini</h4>`
+    let htmlString2 = ""
+    items.forEach((item) => {
+        console.log(item)
+        htmlString2 +=
+        `<div class="card">
+            <div class="card-body">
+                <h5 class="card-title">${item.fields.name}</h5>
+                <p class="card-text">${item.fields.description}</p>
+                <p class="card-text">Price: Rp${item.fields.price}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item flex-v">Amount: ${item.fields.amount}
+                    <div>
+                        <button value="${item.pk}" onclick="addAmount(${item.pk})" class="secondary-button">Add</button>
+                        <button value="${item.pk}" onclick="removeAmount(${item.pk})" class="secondary-button">Remove</button>
+                    </div>
+                </li>
+            </ul>
+            <div class="card-body">
+                <button value="${item.pk}" onclick="deleteItem(${item.pk})" class="primary-button">Delete</button>
+            </div>
+        </div>` 
+    })
+    document.getElementById("amount-message").innerHTML = htmlString1
+    document.getElementById("product").innerHTML = htmlString2
+}
+
+refreshItems()
+
+function addItem() {
+    fetch("{% url 'main:add_item_ajax' %}", {
+        method: "POST",
+        body: new FormData(document.querySelector('#form'))
+    }).then(refreshItems)
+
+    document.getElementById("form").reset()
+    return false
+}
+
+document.getElementById("button_add").onclick = addItem
+
+function deleteItem(id) {
+  fetch(`/delete/`, {
+    method: "DELETE",
+    body: JSON.stringify({
+      id: id
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then(res => {
+    refreshItems();
+  }).catch(err => {
+    console.log(err);
+    alert("Gagal menghapus item.");
+  })
+}
+
+function addAmount(id) {
+  fetch(`/add/`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      id: id
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then(res => {
+    refreshItems();
+  }).catch(err => {
+    console.log(err);
+    alert("Gagal menambah amount item.");
+  })
+}
+
+function removeAmount(id) {
+  fetch(`/remove/`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      id: id
+    }),
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+    },
+  }).then(res => {
+    refreshItems();
+  }).catch(err => {
+    console.log(err);
+    alert("Gagal mengurangi amount item.");
+  })
+}
+</script>
 {% endblock content %}

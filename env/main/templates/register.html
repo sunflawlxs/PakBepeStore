@@ -4,31 +4,137 @@
     <title>Register</title>
 {% endblock meta %}
 
-{% block content %}  
+{% block content %} 
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family:'Arial', sans-serif;
+    }
 
-<div class = "login">
-    
-    <h1>Register</h1>  
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #e7a180;
+    }
 
-        <form method="POST" >  
+    .container {
+        width: 100%;
+        display: flex;
+        max-width: 400px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .login {
+        width: 400px;
+    }
+
+    form {
+        width: 250px;
+        margin: 60px auto;
+    }
+
+    h1 {
+        margin: 20px;
+        text-align: center;
+        font-weight: bolder;
+        text-transform: uppercase;
+    }
+
+    hr {
+        border-top: 2px solid #e7a1b0;
+    }
+
+    p {
+        text-align: center;
+        margin: 10px;
+    }
+
+    form label {
+        display: block;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 5px;
+    }
+
+    input {
+        width: 100%;
+        margin: 2px;
+        border: none;
+        outline: none;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid gray;
+    }
+
+    button {
+        border: none;
+        outline: none;
+        padding: 8px;
+        width: 252px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 20px;
+        border-radius: 5px;
+        background: #d5647c;
+    }
+
+    button:hover {
+        background: rgba(231, 161, 176, 1);
+    }
+
+
+    @media (max-width: 880px) {
+        .container {
+            width: 100%;
+            max-width: 400px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        form {
+            width: 300px;
+            margin: 20px auto;
+        }
+
+        .login {
+            width: 400px;
+            padding: 20px;
+        }
+
+        button {
+            width: 100%;
+        }
+    } 
+
+</style> 
+<div class = "container"> 
+    <div class = "login">  
+        <form method="POST">
+            <h1>Register</h1>  
             {% csrf_token %}  
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Daftar"/></td>  
-                </tr>  
-            </table>  
+            <label>{{form.username.label}}</label>
+            {{form.username}}
+            <label>{{form.password1.label}}</label>
+            {{form.password1}}
+            <label>{{form.password2.label}}</label>
+            {{form.password2}}
+            <button type="submit" name="submit">Daftar</button>
+            {% if messages %}  
+                <ul>   
+                    {% for message in messages %}  
+                        <li>{{ message }}</li>  
+                        {% endfor %}  
+                </ul>   
+            {% endif %}
         </form>
-
-    {% if messages %}  
-        <ul>   
-            {% for message in messages %}  
-                <li>{{ message }}</li>  
-                {% endfor %}  
-        </ul>   
-    {% endif %}
-
+    </div>
 </div>  
 
 {% endblock content %}

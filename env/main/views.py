@@ -1,5 +1,7 @@
 import datetime
-from django.http import HttpResponseRedirect, Http404
+import json
+
+from django.http import HttpResponseRedirect, Http404, HttpResponseNotFound
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
@@ -13,31 +15,37 @@ from django.db.models import Sum
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required(login_url='/login')
 def show_main(request):
-    products = Product.objects.filter(user=request.user)
-    total_amount = Product.objects.filter(user=request.user).aggregate(total_amount=Sum('amount'))['total_amount']
-    jumlah_products = total_amount if total_amount is not None else 0  
-
-    # if products:
-    #     last_products = products.last()
-    # else: 
-    #     last_products = None
-
+    products = Product.objects.filter(user=request.user) 
 
     context = {
-        'AppName': 'PakBepeStore' ,
-        'name': request.user.username,
-        'class': 'PBP D', # Kelas PBP kamu
-        'NPM': '2206824943',
+        'app_name': 'main',
+        'username': request.user.username,
+        'class': 'PBP D',
         'products': products,
-        'jumlah_products': str(jumlah_products),
-        'last_login': request.COOKIES['last_login'],
-      #  'last_products': last_products,
+        'last_login': request.COOKIES.get('last_login'),
     }
 
     return render(request, "main.html", context)
+
+def show_xml(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = Product.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_xml_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json_by_id(request, id):
+    data = Product.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 def register(request):
     form = UserCreationForm()
@@ -48,6 +56,8 @@ def register(request):
             form.save()
             messages.success(request, 'Your account has been successfully created!')
             return redirect('main:login')
+        else:
+            messages.error(request, "Your username or password aren't valid!")
     context = {'form':form}
     return render(request, 'register.html', context)
 
@@ -72,67 +82,46 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
-def create_product(request):
-    form = ProductForm(request.POST or None)
+def get_item_json(request):
+  Products = Product.objects.filter(user=request.user)
+  return HttpResponse(serializers.serialize('json', Items))
 
-    if form.is_valid() and request.method == "POST":
-        product = form.save(commit=False)
-        product.user = request.user
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_product = Product(name=name, price=price, amount=amount, description=description, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def delete_item_ajax(request):
+    data = json.loads(request.body.decode("utf-8"))
+    product = Product.objects.get(pk=data["id"])
+    product.delete()
+    return HttpResponse("DELETED",status=200)
+
+@csrf_exempt
+def add_amount_ajax(request):
+    data = json.loads(request.body.decode("utf-8"))
+    product = Product.objects.get(pk=data["id"])
+    product.amount += 1
+    product.save()
+    return HttpResponse(status=200)
+
+@csrf_exempt
+def remove_amount_ajax(request):
+    data = json.loads(request.body.decode("utf-8"))
+    product = Product.objects.get(pk=data["id"])
+    if product.amount > 1:
+        product.amount -= 1
         product.save()
-        return HttpResponseRedirect(reverse('main:show_main'))
-
-    context = {'form': form}
-    return render(request, "create_product.html", context)
-
-def show_xml(request):
-    data = Product.objects.all()
-    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
-
-def show_json(request):
-    data = Product.objects.all()
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-
-def show_xml_by_id(request, id):
-    data = Product.objects.filter(pk=id)
-    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
-
-def show_json_by_id(request, id):
-    data = Product.objects.filter(pk=id)
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-
-def add_amount(request, id):
-    try:
-        products = Product.objects.get(pk=id)
-        if request.method == 'GET':
-            products.amount += 1
-            products.save()
-            messages.success(request, 'Sukses Menambah Amount.')
-            return redirect('main:show_main')
-        return redirect('main:show_main')
-    except Product.DoesNotExist:
-        raise Http404("Item tidak ditemukan.")
-    
-def remove_amount(request, id):
-    try:
-        products = Product.objects.get(pk=id)
-        if request.method == 'GET':
-            products.amount -= 1
-            products.save()
-            if products.amount == 0:
-                products.delete()
-            messages.success(request, 'Sukses Mengurangi Amount.')
-            return redirect('main:show_main')
-        return redirect('main:show_main')
-    except Product.DoesNotExist:
-        raise Http404("Item tidak ditemukan.")
-
-def delete_product(request, id):
-    try:
-        products = Product.objects.get(pk=id)
-        if request.method == 'GET':
-            products.delete()
-            messages.success(request, 'Sukses Menghapus Item.')
-            return redirect('main:show_main')
-        return redirect('main:show_main')
-    except Product.DoesNotExist:
-        raise Http404("Item tidak ditemukan.")
+    return HttpResponse(status=200)
