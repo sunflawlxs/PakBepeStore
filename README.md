@@ -1273,7 +1273,247 @@ Penyesuaian: Fetch API memberikan lebih banyak kontrol dan fleksibilitas dalam m
 oleh karena itu, saya  menginginkan kontrol yang lebih besar, berfokus pada AJAX, dan lebih memperhatikan efisiensi, Fetch API adalah pilihan yang baik. Namun, jika saya  bekerja dengan proyek yang lebih besar yang memerlukan banyak fitur tambahan seperti animasi dan manipulasi DOM, atau jika Anda harus mendukung browser lama, maka jQuery dapat menjadi pilihan yang lebih nyaman dan komprehensif.
 
 # Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
+### AJAX GET
+1. Mengambil data item dalam format JSON untuk pengguna yang terautentikasi melalui permintaan AJAX GET
+    ```shell
+    ...
+    def get_item_json(request):
+        Items = Item.objects.filter(user=request.user)
+        return HttpResponse(serializers.serialize('json', Items))
+    ```
+2. Membuat fungsi JavaScript di main.html untuk menampilkan data item dengan menambahkan kode berikut
+    ```shell
+    ...
+    <script>
+    async function getItems() {
+        return fetch("{% url 'main:get_item_json' %}").then((res) => res.json())
+    }
+    </script>
+    ...
+    ```
+    3. Mengganti fungsi add_amount, remove_amount, dan delete_item di views.py dengan:
+    
+    add_amount_ajax:
+    ```shell
+    ...
+    @csrf_exempt
+    def add_amount_ajax(request):
+        data = json.loads(request.body.decode("utf-8"))
+        product = Product.objects.get(pk=data["id"])
+        product.amount += 1
+        product.save()
+        return HttpResponse(status=200)
+    ```
+    remove_amount_ajax:
+    ```shell
+    ...
+    @csrf_exempt
+    def remove_amount_ajax(request):
+        data = json.loads(request.body.decode("utf-8"))
+        product = Product.objects.get(pk=data["id"])
+        if product.amount > 1:
+            product.amount -= 1
+            product.save()
+        return HttpResponse(status=200)
+    ```
+    delete_item_ajax:
+    ```shell
+    ...
+    @csrf_exempt
+    def delete_item_ajax(request):
+        data = json.loads(request.body.decode("utf-8"))
+        product = Product.objects.get(pk=data["id"])
+        product.delete()
+        return HttpResponse("DELETED",status=200)
+    ```
+4. Mengganti import add_amount, remove_amount, dan delete_item pada urls.py menjadi add_amount_ajax, remove_amount_ajax, dan delete_item_ajax
+5. Mengganti path untuk add_amount, remove_amount, dan delete_item 
+6. Menambahkan path untuk fungsi get_item_json di urls.py
+    ```shell
+    ...
+    path('get-item/', get_item_json, name='get_item_json'),
+    ```
+7. Menambahkan fungsi JavaScript untuk menambah amount, mengurangi amount, dan menghapus item pada main.html tag script
+    ```shell
+    ...
+    function deleteItem(id) {
+        fetch(`/delete/`, {
+            method: "DELETE",
+            body: JSON.stringify({
+            id: id
+            }),
+            headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(res => {
+            refreshItems();
+        }).catch(err => {
+            console.log(err);
+            alert("Gagal menghapus item.");
+        })
+    }
 
+    function addAmount(id) {
+        fetch(`/add/`, {
+            method: "PATCH",
+            body: JSON.stringify({
+            id: id
+            }),
+            headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(res => {
+            refreshItems();
+        }).catch(err => {
+            console.log(err);
+            alert("Gagal menambah amount item.");
+        })
+    }
 
+    function removeAmount(id) {
+        fetch(`/remove/`, {
+            method: "PATCH",
+            body: JSON.stringify({
+            id: id
+            }),
+    headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(res => {
+            refreshItems();
+        }).catch(err => {
+            console.log(err);
+            alert("Gagal mengurangi amount item.");
+        })
+    }
+    </script>
+    ```
+
+### AJAX POST
+1. Membuat sebuah modal di main.html untuk dengan form untuk menambahkan product
+   ```shell
+   ...
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                           {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    ...
+    ```
+2. Membuat sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item
+   ```shell
+   ...
+   <button type="button" class="btn btn-outline-success" id="btn_add_item" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin: 20px;">Add New Item</button>
+   ...
+   ```
+3. Membuat fungsi view baru untuk menambahkan item baru ke dalam basis data
+    ```shell
+    ...
+    @csrf_exempt
+    def add_item_ajax(request):
+        if request.method == 'POST':
+            name = request.POST.get("name")
+            price = request.POST.get("price")
+            amount = request.POST.get("amount")
+            description = request.POST.get("description")
+            user = request.user
+
+            new_item = Item(name=name, price=price, amount=amount, description=description, user=user)
+            new_item.save()
+
+            return HttpResponse(b"CREATED", status=201)
+
+        return HttpResponseNotFound()
+    ```
+4. Membuat path /create-ajax/ yang mengarah ke fungsi view add_item_ajax
+    ```shell
+    ...
+    path('create-ajax/', add_item_ajax, name='add_item_ajax'),
+    ```
+5. Membuat fungsi JavaScript untuk menghubungkan form yang telah kamu buat di dalam modal ke path /create-ajax/ dengan menambahkan kode berikut di dalam tag script main.html
+    ```shell
+    ...
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    </script>
+    ```
+6. Melakukan refresh asinkronus dengan menambahkan kode berikut pada tag script main.html
+    ```shell
+    ...
+    async function refreshItems() {
+        const items = await getItems()
+        const jumlahItem = items.length
+        let htmlString1 = `<h4>Kamu menyimpan ${jumlahItem} item pada aplikasi ini</h4>`
+         let htmlString2 = ""
+        items.forEach((item) => {
+            console.log(item)
+            htmlString2 +=
+            `<div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${item.fields.name}</h5>
+                    <p class="card-text">${item.fields.description}</p>
+                    <p class="card-text">Price: Rp${item.fields.price}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item flex-v">Amount: ${item.fields.amount}
+                        <div>
+                            <button value="${item.pk}" onclick="addAmount(${item.pk})" class="secondary-button">Add</button>
+                            <button value="${item.pk}" onclick="removeAmount(${item.pk})" class="secondary-button">Remove</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <button value="${item.pk}" onclick="deleteItem(${item.pk})" class="primary-button">Delete</button>
+                </div>
+            </div>` 
+        })
+        document.getElementById("amount-message").innerHTML = htmlString1
+        document.getElementById("product").innerHTML = htmlString2
+    }
+
+    refreshItems()
+    </script>
+    ```
+7. Menjalankan perintah:
+    ```
+    python manage.py collectstatic
+    ```
 
 </details>
