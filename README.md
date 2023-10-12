@@ -17,7 +17,7 @@ Pada langkah ini saya telah memastikan kalau sudah memiliki akun GitHub karena s
 ```
 mkdir PakBepeStore
 cd PakBepeStore
-```
+
 5. Setelah itu kita membuat virtual environment dengan menjalankan perintah 
 ```python -m venv env```
 6. Setelah berhasil membuat virtual environment kita bisa mengaktifkannya dengan perintah. 
@@ -700,7 +700,7 @@ JSON dapat digunakan dalam kode Java Script tanpa perlu proses parsing yang rumi
 
 
 BONUS 
-Menambahkan pesan "Kamu menyimpan 2 item pada toko ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama. 
+Menambahkan pesan "Kamu menyimpan 2 product pada toko ini" (dengan X adalah jumlah data product yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama. 
 <img width="1259" alt="Screen Shot 2023-09-19 at 20 25 25" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/a281c419-8f27-4f81-8ae9-b785f913e65d">
 
  Melakukan add-commit-push ke GitHub.
@@ -881,7 +881,7 @@ path('logout/', logout_user, name='logout'),
 <img width="628" alt="Screen Shot 2023-09-26 at 20 03 54" src="https://github.com/sunflawlxs/PakBepeStore/assets/123561471/4be0960b-b196-4719-9b2e-32072e7d71cc">
 
 
-3. Menghubungkan model Item dengan User.
+3. Menghubungkan model product dengan User.
 - buka ```models.py``` dan tambahkan kode
 ```
 ...
@@ -1139,34 +1139,34 @@ Kesimpulannya, pemilihan antara Bootstrap dan Tailwind CSS bergantung pada kebut
 
 ## BONUS TUGAS 5**
 
-1. Menambahkan style pada create_item.html, login.html, main.html, dan register.html direktori main.
+1. Menambahkan style pada create_product.html, login.html, main.html, dan register.html direktori main.
 2. Inventori di main.html ditampilkan menggunakan card
 ```<div class="product">
-    {% for item in items %}
+    {% for product in products %}
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{item.name}}</h5>
-                <p class="card-text">{{item.description}}</p>
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">{{product.description}}</p>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item flex-v">Amount: {{item.amount}}
+                <li class="list-group-product flex-v">Amount: {{product.amount}}
                     <div>
-                        <a href="{% url 'main:add' item.id %}">
+                        <a href="{% url 'main:add' product.id %}">
                             <button class="secondary-button">
                                 Add
                             </button>
                         </a>
-                        <a href="{% url 'main:remove' item.id %}">
+                        <a href="{% url 'main:remove' product.id %}">
                             <button class="secondary-button">
                                 Remove
                             </button>
                         </a>
                     </div>
                 </li>
-                <li class="list-group-item">Price: {{item.price}}</li>
+                <li class="list-group-product">Price: {{product.price}}</li>
             </ul>
             <div class="card-body">
-                <a href="{% url 'main:delete' item.id %}">
+                <a href="{% url 'main:delete' product.id %}">
                     <button class="primary-button">Delete</button>
                 </a>
             </div>
@@ -1273,7 +1273,247 @@ Penyesuaian: Fetch API memberikan lebih banyak kontrol dan fleksibilitas dalam m
 oleh karena itu, saya  menginginkan kontrol yang lebih besar, berfokus pada AJAX, dan lebih memperhatikan efisiensi, Fetch API adalah pilihan yang baik. Namun, jika saya  bekerja dengan proyek yang lebih besar yang memerlukan banyak fitur tambahan seperti animasi dan manipulasi DOM, atau jika Anda harus mendukung browser lama, maka jQuery dapat menjadi pilihan yang lebih nyaman dan komprehensif.
 
 # Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
+### AJAX GET
+1. Mengambil data product dalam format JSON untuk pengguna yang terautentikasi melalui permintaan AJAX GET
+    ```shell
+    ...
+    def get_product_json(request):
+        products = product.objects.filter(user=request.user)
+        return HttpResponse(serializers.serialize('json', products))
+    ```
+2. Membuat fungsi JavaScript di main.html untuk menampilkan data product dengan menambahkan kode berikut
+    ```shell
+    ...
+    <script>
+    async function getproducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+    </script>
+    ...
+    ```
+    3. Mengganti fungsi add_amount, remove_amount, dan delete_product di views.py dengan:
+    
+    add_amount_ajax:
+    ```shell
+    ...
+    @csrf_exempt
+    def add_amount_ajax(request):
+        data = json.loads(request.body.decode("utf-8"))
+        product = Product.objects.get(pk=data["id"])
+        product.amount += 1
+        product.save()
+        return HttpResponse(status=200)
+    ```
+    remove_amount_ajax:
+    ```shell
+    ...
+    @csrf_exempt
+    def remove_amount_ajax(request):
+        data = json.loads(request.body.decode("utf-8"))
+        product = Product.objects.get(pk=data["id"])
+        if product.amount > 1:
+            product.amount -= 1
+            product.save()
+        return HttpResponse(status=200)
+    ```
+    delete_product_ajax:
+    ```shell
+    ...
+    @csrf_exempt
+    def delete_product_ajax(request):
+        data = json.loads(request.body.decode("utf-8"))
+        product = Product.objects.get(pk=data["id"])
+        product.delete()
+        return HttpResponse("DELETED",status=200)
+    ```
+4. Mengganti import add_amount, remove_amount, dan delete_product pada urls.py menjadi add_amount_ajax, remove_amount_ajax, dan delete_product_ajax
+5. Mengganti path untuk add_amount, remove_amount, dan delete_product 
+6. Menambahkan path untuk fungsi get_product_json di urls.py
+    ```shell
+    ...
+    path('get-product/', get_product_json, name='get_product_json'),
+    ```
+7. Menambahkan fungsi JavaScript untuk menambah amount, mengurangi amount, dan menghapus product pada main.html tag script
+    ```shell
+    ...
+    function deleteproduct(id) {
+        fetch(`/delete/`, {
+            method: "DELETE",
+            body: JSON.stringify({
+            id: id
+            }),
+            headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(res => {
+            refreshproducts();
+        }).catch(err => {
+            console.log(err);
+            alert("Gagal menghapus product.");
+        })
+    }
 
+    function addAmount(id) {
+        fetch(`/add/`, {
+            method: "PATCH",
+            body: JSON.stringify({
+            id: id
+            }),
+            headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(res => {
+            refreshproducts();
+        }).catch(err => {
+            console.log(err);
+            alert("Gagal menambah amount product.");
+        })
+    }
 
+    function removeAmount(id) {
+        fetch(`/remove/`, {
+            method: "PATCH",
+            body: JSON.stringify({
+            id: id
+            }),
+    headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+            },
+        }).then(res => {
+            refreshproducts();
+        }).catch(err => {
+            console.log(err);
+            alert("Gagal mengurangi amount product.");
+        })
+    }
+    </script>
+    ```
+
+### AJAX POST
+1. Membuat sebuah modal di main.html untuk dengan form untuk menambahkan product
+   ```shell
+   ...
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form" onsubmit="return false;">
+                           {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" name="name"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="col-form-label">Price:</label>
+                            <input type="number" class="form-control" id="price" name="price"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="amount" class="col-form-label">Amount:</label>
+                            <input type="number" class="form-control" id="amount" name="amount"></input>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="col-form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    ...
+    ```
+2. Membuat sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan product
+   ```shell
+   ...
+   <button type="button" class="btn btn-outline-success" id="btn_add_product" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin: 20px;">Add New product</button>
+   ...
+   ```
+3. Membuat fungsi view baru untuk menambahkan product baru ke dalam basis data
+    ```shell
+    ...
+    @csrf_exempt
+    def add_product_ajax(request):
+        if request.method == 'POST':
+            name = request.POST.get("name")
+            price = request.POST.get("price")
+            amount = request.POST.get("amount")
+            description = request.POST.get("description")
+            user = request.user
+
+            new_product = product(name=name, price=price, amount=amount, description=description, user=user)
+            new_product.save()
+
+            return HttpResponse(b"CREATED", status=201)
+
+        return HttpResponseNotFound()
+    ```
+4. Membuat path /create-ajax/ yang mengarah ke fungsi view add_product_ajax
+    ```shell
+    ...
+    path('create-ajax/', add_product_ajax, name='add_product_ajax'),
+    ```
+5. Membuat fungsi JavaScript untuk menghubungkan form yang telah kamu buat di dalam modal ke path /create-ajax/ dengan menambahkan kode berikut di dalam tag script main.html
+    ```shell
+    ...
+    function addproduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshproducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    </script>
+    ```
+6. Melakukan refresh asinkronus dengan menambahkan kode berikut pada tag script main.html
+    ```shell
+    ...
+    async function refreshproducts() {
+        const products = await getproducts()
+        const jumlahproduct = products.length
+        let htmlString1 = `<h4>Kamu menyimpan ${jumlahproduct} product pada aplikasi ini</h4>`
+         let htmlString2 = ""
+        products.forEach((product) => {
+            console.log(product)
+            htmlString2 +=
+            `<div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${product.fields.name}</h5>
+                    <p class="card-text">${product.fields.description}</p>
+                    <p class="card-text">Price: Rp${product.fields.price}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-product flex-v">Amount: ${product.fields.amount}
+                        <div>
+                            <button value="${product.pk}" onclick="addAmount(${product.pk})" class="secondary-button">Add</button>
+                            <button value="${product.pk}" onclick="removeAmount(${product.pk})" class="secondary-button">Remove</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <button value="${product.pk}" onclick="deleteproduct(${product.pk})" class="primary-button">Delete</button>
+                </div>
+            </div>` 
+        })
+        document.getElementById("amount-message").innerHTML = htmlString1
+        document.getElementById("product").innerHTML = htmlString2
+    }
+
+    refreshproducts()
+    </script>
+    ```
+7. Menjalankan perintah:
+    ```
+    python manage.py collectstatic
+    ```
 
 </details>
