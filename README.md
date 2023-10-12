@@ -1066,20 +1066,20 @@ Waktu yang tepat: Cocok untuk menerapkan gaya atau perilaku yang unik pada satu 
 
 | Tag | Penjelasan |
 | --- | --- |
-| <a> | Mendefinisikan hyperlink |
-| <abbr> | Mendefinisikan bentuk singkatan dari kata atau frasa yang panjang |
-| <address> | Menentukan informasi kontak penulis |
-| <area> | Mendefinisikan area tertentu dalam peta gambar |
+| `<a>` | Mendefinisikan hyperlink |
+| `<abbr>` | Mendefinisikan bentuk singkatan dari kata atau frasa yang panjang |
+| `<address>` | Menentukan informasi kontak penulis |
+| `<area> `| Mendefinisikan area tertentu dalam peta gambar |
 | `<!--...-->` | Menentukan komentar |
-| <!DOCTYPE> | Menentukan jenis dokumen |
-| <div> | Menentukan bagian dalam dokumen |
-| <detail> | Menentukan informasi tambahan yang dapat diperoleh pengguna |
-| <header> | Menentukan informasi tentang dokumen |
-| <q> | Menentukan variabel |
-| <select> | Menentukan daftar yang dapat dipilih |
-| <spacer> | Menentukan white space |
-| <style> | Menentukan definisi gaya |
-| <table> | Menentukan tabel |
+| `<!DOCTYPE>` | Menentukan jenis dokumen |
+|` <div> `| Menentukan bagian dalam dokumen |
+| `<detail>` | Menentukan informasi tambahan yang dapat diperoleh pengguna |
+| `<header>` | Menentukan informasi tentang dokumen |
+| `<q>` | Menentukan variabel |
+| `<select>` | Menentukan daftar yang dapat dipilih |
+| `<spacer>` | Menentukan white space |
+| `<style>` | Menentukan definisi gaya |
+| `<table>` | Menentukan tabel |
 
 <br>
 
@@ -1135,115 +1135,144 @@ Anda ingin menghindari kelebihan kode yang tidak terpakai dengan menggunakan tek
 Anda ingin mendekati tampilan dengan cara yang lebih alami, tanpa harus mengikuti gaya tertentu.
 Kesimpulannya, pemilihan antara Bootstrap dan Tailwind CSS bergantung pada kebutuhan proyek Anda, tingkat kustomisasi yang diinginkan, dan preferensi Anda dalam pengembangan web. Keduanya memiliki kelebihan dan kelemahan masing-masing, dan tidak ada pilihan yang satu benar-benar lebih baik daripada yang lain dalam semua situasi.
 
- <details></details>
-<summary>📋Assignment 5</summary>
-
-## **DAFTAR ISI**
-* [Manfaat Element Selector dan Penggunaan Waktunya](#a-manfaat-tiap-element-selector-dan-penggunaan-waktu-yang-tepatnya)
-* [Penjelasan HTML5 Tag](#b-penjelasan-html5-tag)
-* [Perbedaan Margin dan *Padding*](#c-perbedaan-margin-dan-padding)
-* [Perbedaan dan Penggunaan framework CSS Tailwind dan Bootstrap](#d-perbedaan-dan-penggunaan-framework-css-tailwind-serta-bootstrap)
-* [BONUS](#e-bonus-tugas-5)
-<hr>
-
-## **A. Manfaat Tiap Element Selector dan Penggunaan Waktu yang Tepatnya**
-#### **1. *Element Selector***
-* **Manfaat:**
-    * Dapat mengubah properti untuk semua elemen yang memiliki tag HTML yang sama atau dapat memilih elemen HTML berdasarkan nama elemen.
-    * Dapat mengaplikasikan style yang sama pada tiap elemen dengn jenis yang sama, contohnya seperti tag <p> atau `<h1>`.
-* **Penggunaan Waktu yang Tepat:**
-    * Ketika kita ingin mengubah style tiap elemen dengan jenis yang sama dan tidak ada class maupun ID khusus. 
-<br>
-
-#### **2. *ID Selector***
-* **Manfaat:**
-    * Dapat memilih elemen berdasarkan ID yang diberikan. IDnya unik dalam satu halaman web dan dapat ditambahkan pada halaman template HTML.
-* **Penggunaan Waktu yang Tepat:**
-    * Ketika ingin memberikan interaksi atau style khusus pada satu elemen tertentu.
-<br>
-
-#### **3. *Class Selector***
-* **Manfaat:**
-    * Dapat mengelompokkan elemen dengan karakteristik yang sama.
-    * Dapat memilih elemen berdasarkan nama class yang diberi.
-* **Penggunaan Waktu yang Tepat:**
-    * Ketika ingin memberikan style yang identik terhadap beberapa elemen dalam halaman.
-<br>
-
-Source:
-* https://www.w3schools.com/CSS/css_selectors.asp
-<br>
-
-## **B. Penjelasan HTML5 Tag**
-HTML5, versi terbaru dari bahasa markup HTML, memperkenalkan banyak tag baru dan perubahan dalam struktur dokumen web. Berikut adalah beberapa tag HTML5 yang umum dan penting yang saya ketahui:
-
-<header>: Digunakan untuk mendefinisikan bagian atas atau kepala dari sebuah dokumen HTML. Biasanya berisi logo, judul, menu navigasi, atau elemen-elemen lain yang berkaitan dengan kepala halaman.
-
-<nav>: Digunakan untuk mengelompokkan elemen-elemen yang berhubungan dengan navigasi, seperti menu utama atau menu samping.
-
-<section>: Menyediakan cara untuk mengelompokkan konten yang terkait dalam suatu halaman web. Biasanya memiliki judul atau heading yang menggambarkan konten tersebut.
-
-<article>: Digunakan untuk mengelompokkan konten independen dalam sebuah halaman, seperti berita, posting blog, atau artikel.
-
-<aside>: Menandakan konten yang berhubungan dengan konten di sekitarnya, namun dapat dianggap sebagai konten tambahan atau sekunder. Biasanya digunakan untuk sisibar, iklan, atau konten terkait lainnya.
-
-<footer>: Mendefinisikan bagian bawah dari sebuah dokumen HTML atau bagian bawah dari elemen tertentu. Biasanya berisi informasi penulis, tautan ke halaman lain, atau informasi kontak.
-
-<figure> dan <figcaption>: <figure> digunakan untuk mengelompokkan elemen-elemen media seperti gambar, video, atau ilustrasi lainnya bersama dengan <figcaption>, yang digunakan untuk memberikan deskripsi atau keterangan untuk elemen media tersebut.
-
-<main>: Menandakan konten utama dalam sebuah dokumen HTML. Hanya boleh ada satu elemen <main> dalam satu halaman.
-
-<video> dan <audio>: Digunakan untuk menyisipkan dan mengontrol file multimedia seperti video dan audio di halaman web.
-
-<canvas>: Memungkinkan pembuatan gambar, grafik, dan animasi yang bisa diatur melalui kode JavaScript. Berguna untuk pengembangan game web dan visualisasi data.
-
-<input type="date">, <input type="email">, <input type="url">, dll.: Elemen-elemen input HTML5 yang memungkinkan input yang lebih spesifik, seperti tanggal, alamat email, atau URL. Ini memungkinkan validasi input yang lebih baik dan pengalaman pengguna yang lebih baik.
-
-<progress>: Digunakan untuk menunjukkan kemajuan dalam tugas yang sedang berlangsung, seperti pengunggahan berkas atau proses pengunduhan.
-
-## **C. Perbedaan Margin dan *Padding***
-![COBA](/photos/marginpadding.png)
-| Margin | Padding |
-| --- | --- |
-| Mengosongkan area di sekitar border (transparan) | Mengosongkan area di sekitar konten (transparan) |
-| Ruang luar suatu elemen yaitu margin yang merupakan ruang di luar batas | Ruang dalam suatu elemen padding yaitu ruang dalam batas elemen |
-| Dapat berupa angka negatif atau float | Tidak boleh ada nilai-nilai negatif |
-| Mengatur margin menjadi otomatis | Tidak dapat mengatur padding menjadi otomatis |
-| Penataan style elemen seperti warna backgorund tidak memengaruhi margin | Padding dipengaruhi style suatu elemen seperti background |
-
-<br>
-
-Source:
-* https://www.geeksforgeeks.org/css-padding-vs-margin/
-<br>
-
-## **D. Perbedaan dan Penggunaan framework CSS Tailwind serta Bootstrap**
-| Tailwind | Bootstrap |
-| --- | --- |
-| Membangun tampilan dengan menggabungkan class-class utilitas yang telah didefinisikan sebelumnya | Menggunakan style dan komponen yang sudah didefinisikan, memiliki tampilan yang sudah jadi dan dapat digunakan langsung |
-| Memiliki file CSS yang lebih kecil dan memuat class-class utilitas yang ada | Memiliki file CSS yang lebih besar karena termasuk banyak komponen yang telah didefinisikan |
-| Memberikan fleksibilitas dan adaptabilitas tinggi terhadap proyek | Menghasilkan tampilan yang lebih konsisten di seluruh proyek karena memakai komponen yang sudah didefinisikan |
-| Memiliki pembelajaran lebih curam karena perlu pemahaman terhadap class-class utilitas yang tersedia dan cara menggabungkannya untuk mencapai tampilan yang kita inginkan | Memiliki pembelajaran yang lebih cepat untuk pemula karena dapat mulai dengan komponen yang sudah didefinisikan |
-
-<br>
-
-Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
-
-* ***Bootsrap:***
-    * Apabila ingin membangun situs web dengan cepat.
-    * 
-
-* ***Tailwind:***
-    * dsdsdsdsdsdsdss
-
-Source:
-* https://www.tutorialspoint.com/tailwind-css-vs-bootstrap
-* https://pbp-fasilkom-ui.github.io/ganjil-2024/docs/tutorial-4
-<br>
-
-## **E. BONUS TUGAS 5**
 
 
+## BONUS TUGAS 5**
+
+1. Menambahkan style pada create_item.html, login.html, main.html, dan register.html direktori main.
+2. Inventori di main.html ditampilkan menggunakan card
+```<div class="product">
+    {% for item in items %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.description}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item flex-v">Amount: {{item.amount}}
+                    <div>
+                        <a href="{% url 'main:add' item.id %}">
+                            <button class="secondary-button">
+                                Add
+                            </button>
+                        </a>
+                        <a href="{% url 'main:remove' item.id %}">
+                            <button class="secondary-button">
+                                Remove
+                            </button>
+                        </a>
+                    </div>
+                </li>
+                <li class="list-group-item">Price: {{item.price}}</li>
+            </ul>
+            <div class="card-body">
+                <a href="{% url 'main:delete' item.id %}">
+                    <button class="primary-button">Delete</button>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+Mengerjakan bonus dengan menambahkan kode berikut di style main.html
+.card:last-child, .card:last-child .flex-v {
+    background: #1569C7;
+}
+```
+Referensi: https://codepolitan.com/blog/perbedaan-bootstrap-dan-tailwind https://getbootstrap.com/docs/4.0/components/card/
+
+
+
+</details>
+
+<details>
+<summary> TUGAS 6</summary>
+
+# Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+Asynchronous programming dan synchronous programming adalah dua paradigma pemrograman yang berbeda dalam cara menjalankan tugas-tugas atau operasi-operasi di dalam program. Berikut ini adalah perbedaan utama antara keduanya:
+
+1. Synchronous Programming (Pemrograman Sinkron):
+   - dalam synchronous programming, operasi-operasi dieksekusi secara berurutan, satu demi satu. Artinya, program akan menunggu operasi tertentu selesai sebelum melanjutkan ke operasi berikutnya.
+   - Ini dapat mengakibatkan program menjadi lambat jika ada operasi yang memakan waktu lama karena program harus menunggu sampai operasi tersebut selesai sebelum bisa melanjutkan.
+
+2. Asynchronous Programming (Pemrograman Asinkron):
+   - Dalam asynchronous programming, operasi-operasi dieksekusi secara bersamaan tanpa harus menunggu operasi sebelumnya selesai.
+   - Biasanya digunakan dalam situasi di mana ada banyak tugas yang harus berjalan secara bersamaan, seperti dalam pemrosesan paralel atau saat mengakses sumber daya jarak jauh seperti jaringan atau penyimpanan.
+   - Menggunakan konsep seperti callback, promise, atau async/await untuk mengatur tugas-tugas yang asinkron dan menangani hasilnya saat sudah tersedia.
+
+Contoh penggunaan asynchronous programming termasuk pemrograman berbasis jaringan seperti HTTP requests, pemrosesan data besar, atau penggunaan antarmuka pengguna yang tidak memblokir program secara keseluruhan saat menunggu input pengguna.
+
+Perbedaan utama adalah bahwa asynchronous programming memungkinkan program untuk tetap responsif dan efisien saat menangani tugas-tugas yang memakan waktu, sementara synchronous programming menjalankan tugas secara berurutan dan dapat menghentikan program untuk sementara waktu saat menunggu tugas selesai.
+
+# Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Paradigma event-driven programming adalah pendekatan pemrograman di mana program merespons kejadian (events) yang terjadi. Sebuah kejadian dapat menjadi tindakan pengguna, seperti mengklik tombol pada antarmuka pengguna, memasukkan teks ke dalam kotak input, atau menggulir halaman web. Pada paradigma ini, program tidak berjalan secara linier dari atas ke bawah, melainkan menunggu kejadian yang terjadi, dan ketika suatu kejadian terjadi, program akan menjalankan kode yang telah ditentukan untuk menangani kejadian tersebut.
+
+Contoh penerapan paradigma event-driven programming dalam JavaScript dan AJAX adalah ketika Anda mengembangkan sebuah halaman web yang memungkinkan pengguna untuk mengklik tombol yang akan memicu permintaan asinkron melalui AJAX. Berikut adalah langkah-langkah penerapannya:
+
+Mendefinisikan elemen HTML: Anda akan mendefinisikan elemen HTML yang akan bertindak sebagai tombol yang dapat diklik oleh pengguna. Misalnya, Anda dapat memiliki elemen <button>.
+
+Menambahkan event listener: Anda akan menambahkan event listener ke elemen tersebut menggunakan JavaScript. Event listener ini akan mendengarkan peristiwa "klik" pada tombol tersebut.
+
+Ketika pengguna mengklik tombol, event listener akan merespons dengan menjalankan kode yang ditentukan di dalamnya. Pada contoh di atas, ketika tombol diklik, kode di dalam fungsi event listener akan dijalankan, dan Anda dapat memicu permintaan AJAX untuk berinteraksi dengan server secara asinkron.
+Dengan pendekatan ini, program Anda merespons kejadian (klik tombol) dan menjalankan tindakan yang sesuai (permintaan AJAX) hanya ketika kejadian tersebut terjadi, sehingga membuat aplikasi web Anda lebih responsif dan interaktif. Ini adalah salah satu contoh yang umum dari paradigma event-driven programming dalam pengembangan web menggunakan JavaScript dan AJAX.
+
+# Jelaskan penerapan asynchronous programming pada AJAX.
+Penerapan asynchronous programming pada AJAX (Asynchronous JavaScript and XML) sangat penting karena AJAX dirancang untuk melakukan komunikasi asinkron dengan server tanpa mengganggu tampilan atau perilaku halaman web. Dalam konteks AJAX, asynchronous programming memungkinkan halaman web untuk tetap responsif selama permintaan data atau informasi dari server dilakukan. Berikut adalah cara penerapan asynchronous programming pada AJAX:
+
+1. **Membuat objek XMLHttpRequest**: Langkah pertama dalam penerapan asynchronous programming pada AJAX adalah membuat objek XMLHttpRequest. Objek ini adalah kunci untuk berkomunikasi dengan server secara asinkron. Berikut adalah contoh cara membuat objek XMLHttpRequest:
+
+   ```javascript
+   var xhr = new XMLHttpRequest();
+   ```
+
+2. **Menentukan tindakan yang akan diambil saat permintaan selesai**: Anda harus menentukan tindakan yang akan diambil ketika permintaan ke server telah selesai. Ini biasanya dilakukan dengan menambahkan event listener ke objek XMLHttpRequest untuk mengawasi perubahan status permintaan.
+
+   ```javascript
+   xhr.onreadystatechange = function () {
+       if (xhr.readyState === 4 && xhr.status === 200) {
+           // Kode di sini akan dijalankan ketika permintaan selesai dengan sukses
+           var responseData = xhr.responseText;
+           // Anda dapat memproses data yang diterima dari server di sini
+       }
+   };
+   ```
+
+   Dalam contoh di atas, `onreadystatechange` akan memicu fungsi ketika permintaan telah selesai (`readyState` adalah 4) dan status HTTP adalah 200, yang menunjukkan sukses.
+
+3. **Mengirim permintaan ke server**: Anda harus mengirim permintaan ke server. Ini dilakukan dengan menggunakan metode `.open()` untuk menentukan metode HTTP dan URL target, lalu metode `.send()` untuk mengirim permintaan.
+
+   ```javascript
+   xhr.open("GET", "https://example.com/data", true); // true menandakan permintaan asinkron
+   xhr.send();
+   ```
+
+   Pada contoh di atas, kami mengirim permintaan GET asinkron ke "https://example.com/data".
+
+4. **Menangani respons dari server**: Respons dari server akan diterima melalui properti `responseText` pada objek XMLHttpRequest. Anda kemudian dapat mengambil data yang diterima dan menggunakannya sesuai kebutuhan.
+
+   ```javascript
+   var responseData = xhr.responseText;
+   // Proses atau tampilkan data dari server di sini
+   ```
+
+Dengan menerapkan asynchronous programming pada AJAX, Anda memastikan bahwa permintaan ke server dapat dijalankan di latar belakang, sehingga halaman web tetap responsif dan tidak terblokir saat menunggu respons dari server. Ini sangat berguna dalam pengembangan aplikasi web yang mengandalkan komunikasi dengan server, seperti pengambilan data dinamis tanpa harus me-refresh halaman.
+
+# Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+
+Perbandingan antara Fetch API dan library jQuery untuk penerapan AJAX memiliki beberapa aspek yang perlu diperhatikan. Berikut adalah perbandingan antara keduanya:
+
+Kompleksitas dan Ukuran: Fetch API adalah bagian dari standar JavaScript modern, sedangkan jQuery adalah library pihak ketiga yang lebih besar. jQuery memiliki fitur dan utilitas tambahan yang mungkin tidak diperlukan dalam proyek tertentu, sehingga ukurannya lebih besar daripada Fetch API. Jika ukuran file dan efisiensi adalah perhatian, Fetch API mungkin lebih unggul.
+
+Kemampuan: Fetch API didesain khusus untuk mengambil dan mengirim data melalui HTTP, sementara jQuery adalah library yang memiliki banyak fungsi lain selain AJAX, seperti animasi, manipulasi DOM, dan lainnya. Jadi, Fetch API lebih fokus dan terbatas pada fitur-fitur HTTP, sementara jQuery lebih lengkap.
+
+Kompatibilitas dan Dukungan Browser: jQuery memiliki dukungan yang lebih luas untuk browser yang lebih lama. Ini membuatnya lebih mudah untuk mengembangkan aplikasi web yang harus berjalan pada browser lama. Fetch API lebih modern dan mungkin memerlukan polyfill atau penggunaan alternatif jika Anda harus mendukung browser lama.
+
+Kemampuan Promises: Fetch API mengembalikan objek Promise, yang memungkinkan untuk menggunakan async/await untuk mengelola permintaan secara lebih jelas dan mudah dibaca. Sementara jQuery menggunakan callback untuk menangani respons, yang dapat menghasilkan callback hell (nesting yang dalam dan sulit dibaca) jika tidak dikelola dengan baik.
+
+Penyesuaian: Fetch API memberikan lebih banyak kontrol dan fleksibilitas dalam mengelola permintaan dan respons, dan Anda dapat menyesuaikannya dengan lebih baik sesuai kebutuhan proyek Anda. jQuery, di sisi lain, abstrak dalam banyak kasus.
+
+oleh karena itu, saya  menginginkan kontrol yang lebih besar, berfokus pada AJAX, dan lebih memperhatikan efisiensi, Fetch API adalah pilihan yang baik. Namun, jika saya  bekerja dengan proyek yang lebih besar yang memerlukan banyak fitur tambahan seperti animasi dan manipulasi DOM, atau jika Anda harus mendukung browser lama, maka jQuery dapat menjadi pilihan yang lebih nyaman dan komprehensif.
+
+# Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step
 
 
 
